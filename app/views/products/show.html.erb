@@ -1,0 +1,40 @@
+<p id="notice"><%= notice %></p>
+
+  <article class="productlist">
+  <div class="column1">
+    <strong>Name</strong>
+    <p><%= @product.name %></p>
+    <strong>Location</strong>
+    <p><%= @product.location %></p>
+    <strong>Price</strong>
+    <p><%= number_to_currency(@product.price, :unit => "$") %></p>
+    <strong>Inventoried?</strong>
+    <p><% if @product.inventory == false %>No<% else %>Yes<% end %></p>
+	<% if @product.donor_id? %>
+    <strong>Donor</strong>
+	<p><%= @product.donor.name %></p>
+	<% end %>
+	<% if @product.category_id %>
+	<strong>Category</strong>
+	<p><%= @product.category.name %></p>
+	<% end %>
+  </div>
+  <div class="column2">
+<!--    <strong>Delivered?</strong>
+    <p><%# if @product.delivery == false %>No<%# else %>Yes<%# end %></p>
+    <strong>Picked Up?</strong>
+    <p><%# if @product.pickup == false %>No<%# else %>Yes<%# end %></p> -->
+    <strong>Accepted?</strong>
+    <p><% if @product.accepted == false %>No<% else %>Yes<% end %></p>
+    <% if @product.accepted == false %>
+    <strong>Reason</strong>
+    <p><%= @product.reason %></p>
+    <% end %>
+  </div>
+  <div class="clearfix">
+    <%= link_to 'Back', products_path %><% if can? :update, @products %> &bull;
+    <%= link_to 'Edit', edit_product_path(@product) %><% end %><% if can? :destroy, @products %> &bull;
+    <%= link_to 'Destroy', @product, method: :delete, data: { confirm: 'Are you sure?' } %><% end %><% if can? :create, @events %> &bull;
+    <%= link_to "Create Event", new_event_path %><% end %>
+  </div>
+  </article>

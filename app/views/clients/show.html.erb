@@ -1,0 +1,47 @@
+<p id="notice"><%= notice %></p>
+
+  <article class="productlist">
+    <strong>Name</strong>
+    <p><%= @client.name %></p>
+
+    <strong>Address</strong>
+    <p><%= @client.address %></p>
+
+    <strong>Phone</strong>
+    <p><%= @client.phone %></p>
+
+    <strong>Email</strong>
+    <p><%= @client.email %></p>
+
+    <% if @client.user_id %>
+		<strong>Referring Agent</strong>
+		<p><%= @client.user.email %></p>
+	<% end %>
+
+    <strong>Adults</strong>
+    <p><%= @client.adults %></p>
+
+    <strong>Children</strong>
+    <p><%= @client.children %></p>
+
+    <% if @client.notes %>
+	    <strong>History</strong>
+	    <p><%= @client.history %></p>
+	<% end %>
+	
+    <% if @client.notes %>
+	    <strong>Notes</strong>
+	    <p><%= @client.notes %></p>
+    <% end %>
+
+  <div class="clearfix">
+    <%= link_to 'Back', clients_path %><% if can? :update, @clients %> &bull;
+    <%= link_to 'Edit', edit_client_path(@client) %><% end %><% if can? :destroy, @clients %> &bull;
+    <%= link_to 'Destroy', @client, method: :delete, data: { confirm: 'Are you sure?' } %><% end %><% if can? :create, @pickup_lists %> &bull;
+    <%= link_to 'New List', controller: :pickup_lists, action: :new, client_id: @client.id %>
+<% end %><% if can? :create, @events %> &bull;
+    <a href="/events/new_with_client/<%= @client.id %>">New appointment for <%= @client.name %></a><% end %>
+    <a href="/pickup_lists/<%= @client.id %>">Existing List</a>
+  </div>
+  </article>
+  

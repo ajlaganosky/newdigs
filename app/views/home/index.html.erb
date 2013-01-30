@@ -1,0 +1,39 @@
+<h1>New Digs Inventory Management Login</h1>
+
+  <section>
+    <% if user_signed_in? %>
+
+        Signed in as <%= current_user.email %>.<br />Welcome.<br />
+        <%= link_to 'Sign out', destroy_user_session_path, :method => :delete %>
+    <% else %>
+        <%= link_to 'Register', new_user_registration_path %> or <%= link_to 'Sign in', new_user_session_path %>
+    <% end %>
+   </section>
+    
+    <% if user_signed_in? %>
+    <section>
+    	<h2>All Products</h2>
+	    <ul>
+		    <% @products.each do |product| %>
+			    <li>
+				    <%= link_to product.name, product %>
+			    </li>
+		    <% end %>
+	    </ul>
+    </section>
+    <section>
+    	<h2>Events Happening Today</h2>
+		    <ul>
+			    <% @events.each do |event| %>
+			    	<% if Date.today == event.expiration_date.to_date %>
+				    <li>
+					    <%= link_to event.name, event %>
+					</li>
+				    <% end %>
+			    <% end %>
+			</ul>
+		    
+    </section>
+    <%= link_to "Inventoried Items", products_path %>
+
+	<% end %>

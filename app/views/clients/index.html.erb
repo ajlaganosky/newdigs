@@ -1,0 +1,37 @@
+<h1>Listing Clients</h1>
+<div class="clearfix">
+<%= link_to 'New Client', new_client_path %>
+</div>
+<section>
+<% @clients.each do |client|%>
+  <article class="productlist">
+	    <strong>Name</strong>
+	    <p><%= client.name %></p>
+	    <strong>Address</strong>
+	    <p><%= client.address %></p>
+	    <strong>Phone</strong>
+	    <p><%= client.phone %></p>
+	    <% if client.email %>
+	    <strong>Email</strong>
+	    <p><%= client.email %></p>
+	    <% end %>
+	    <strong>Adults</strong>
+		<p><%= client.adults %></p>
+	    <strong>Children</strong>
+		<p><%= client.children %></p>
+	    <% if client.history %>
+	    <strong>History</strong>
+		<p><%= truncate(client.history, :length => 80) %></p>
+		<% end %>
+	    <% if client.notes %>
+	    <strong>Notes</strong>
+		<p><%= truncate(client.notes, :length => 80) %></p>
+		<% end %>
+	  <div class="clearfix individualcontrols">
+	    <%= link_to 'Show', client %><% if can? :update, @clients %> 
+	    <%= link_to 'Edit', edit_client_path(client) %><% end %><% if can? :destroy, @clients %> 
+	    <%= link_to 'Destroy', client, method: :delete, data: { confirm: 'Are you sure?' } %> <% end %>
+	  </div>
+  </article>
+<% end %>
+</section>

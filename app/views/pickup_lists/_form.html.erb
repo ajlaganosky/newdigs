@@ -1,0 +1,30 @@
+<%= form_for(@pickup_list) do |f| %>
+  <% if @pickup_list.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@pickup_list.errors.count, "error") %> prohibited this Pickup List from being saved:</h2>
+
+      <ul>
+      <% @pickup_list.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <%= f.hidden_field :client_id %>
+
+  <div class="field">
+  <ul>
+  	<% @product.each do |c| %>
+  		<li class="checklist">
+	  <%= check_box_tag "product_id[]", c.id %>
+	  <%= h c.name %> &bull; <%= h c.category.name %>
+	    </li>
+	<% end %>
+  </ul>
+  </div>
+
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

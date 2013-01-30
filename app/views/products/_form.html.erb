@@ -1,0 +1,59 @@
+<%= form_for(@product) do |f| %>
+  <% if @product.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@product.errors.count, "error") %> prohibited this product from being saved:</h2>
+
+      <ul>
+      <% @product.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+	  <div class="field">
+	    <%= f.label :donor %><br />
+	    <%= f.collection_select(:donor_id, Donor.all, :id, :name, {:include_blank => 'Please select a Donor'}) %>
+	  </div>
+
+  <div class="field">
+    <%= f.label :name %><br />
+    <%= f.text_field :name %>
+  </div>
+
+  <div class="field">
+    <%= f.label :location %><br />
+    <%= f.text_area :location %>
+  </div>
+
+  <div class="field">
+    <%= f.label :price %><br />
+    $ <%= f.text_field :price %>
+  </div>
+
+  <div class="field">
+    <%= f.label :inventory %><br />
+	<%= f.label "Yes" %><%= f.radio_button :inventory, true %><br />
+	<%= f.label "No" %><%= f.radio_button :inventory, false %>
+  </div>
+    
+  <div class="field">
+    <%= f.label :category %><br />
+    <%= f.collection_select(:category_id, Category.all, :id, :name, {:include_blank => 'Please select a Category'}) %>
+  </div>
+
+  <div class="field accepted">
+    <%= f.label :accepted %><br />
+	<%= f.label "Yes" %><%= f.radio_button :accepted, true %><br />
+	<%= f.label "No" %><%= f.radio_button :accepted, false %>
+  </div>
+
+  <div class="field reason">
+    <%= f.label "Reason (if declined)" %><br />
+    <%= f.text_area :reason %>
+  </div>
+
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

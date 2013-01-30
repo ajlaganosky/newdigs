@@ -1,0 +1,2 @@
+module PickedUpHelper
+end

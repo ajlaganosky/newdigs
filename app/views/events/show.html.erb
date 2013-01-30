@@ -1,0 +1,27 @@
+<h1><%= @event.name %></h1>
+
+<p class="info">Published on: <%= @event.published_on.strftime("%B %e, %Y") %></p>
+
+<% if @event.expiration_date? %>
+<p>Expiration Date: <%= @event.expiration_date.strftime("%B %e, %Y") %></p>
+<% end %>
+
+<% if @event.start_time? %>
+<p>Starts at: <%= @event.start_time.to_s %></p>
+<% end %>
+
+<% if @event.end_time? %>
+<p>Ends at: <%= @event.end_time.to_s %></p>
+<% end %>
+
+<% if !@event.product_id.blank? %>
+<p>Product: <%= @event.product.name %></p>
+<% end %>
+
+<blockquote>
+<%= simple_format @event.content %>
+</blockquote>
+<p>
+<% if can? :update, @event %>  <%= link_to "Edit Entry", edit_event_path(@event) %> |<% end %>
+  <%= link_to "Back to Calendar", events_path %>
+</p>

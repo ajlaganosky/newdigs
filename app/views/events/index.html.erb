@@ -1,0 +1,27 @@
+<h1>Calendar of Events</h1>
+<% if can? :create, @products %><p><%= link_to "New Entry", new_event_path %></p><% end %>
+
+<div id="events">
+  <h2 id="month">
+    <%= link_to "<", date: @date.prev_month %>
+    <%= @date.strftime("%B %Y") %>
+    <%= link_to ">", date: @date.next_month %>
+  </h2>
+  <%= calendar @date do |date| %>
+    <%= date.day %>
+    <% if @events_by_date[date] %>
+      <ul>
+        <% @events_by_date[date].each do |event| %>
+          <li><%= link_to event.name, event %></li>
+        <% end %>
+      </ul>
+    <% end %>
+    <% if @expiration_date[date] %>
+      <ul>
+        <% @expiration_date[date].each do |event| %>
+          <li style="color:red;"><%= link_to event.name, event %></li>
+        <% end %>
+      </ul>
+    <% end %>
+  <% end %>
+</div>

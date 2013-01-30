@@ -1,0 +1,40 @@
+<h1>Listing Inventory</h1>
+	    <% if can? :create, @products %> 
+			<%= link_to 'New Product', new_product_path %>
+		<% end %>	
+<section>
+<% @products.each do |product|%>
+  <article class="productlist">
+	  <div class="column1">
+	    <strong>Name</strong>
+	    <p><%= product.name %></p>
+	    <strong>Inventoried?</strong>
+	    <p><% if product.inventory == false %>No<% else %>Yes<% end %></p>
+	    <% if product.category_id %>
+		    <strong>Category</strong>
+			<p><%= product.category.name %></p>
+		<% end %>
+	    <strong>Accepted?</strong>
+	    <p><% if product.accepted == false %>No<% else %>Yes<% end %></p>
+	    <% if product.accepted == false %>
+		    <strong>Reason</strong>
+		    <p><%= truncate(product.reason, :length => 50 ) %></p>
+	    <% end %>  </div>
+	  <div class="clearfix individualcontrols">
+	    <%= link_to 'Show', product %>
+	    <% if can? :update, @products %> 
+		    <%= link_to 'Edit', edit_product_path(product) %>
+	    <% end %>
+	    <% if can? :destroy, @products %> 
+		    <%= link_to 'Destroy', product, method: :delete, data: { confirm: 'Are you sure?' } %>
+		<% end %>
+	  </div>
+  </article>
+<% end %>
+</section>
+
+<br />
+<div class="clearfix">
+<a href="/">Home</a> | 
+<a href="/events">Events</a>
+</div>

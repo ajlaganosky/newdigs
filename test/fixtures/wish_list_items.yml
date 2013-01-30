@@ -1,0 +1,13 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  category_id: MyString
+  product_id: MyString
+  timestamps: MyString
+  available: false
+
+two:
+  category_id: MyString
+  product_id: MyString
+  timestamps: MyString
+  available: false

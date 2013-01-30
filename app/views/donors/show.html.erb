@@ -1,0 +1,17 @@
+<p id="notice"><%= notice %></p>
+
+<p class="info"><strong>Name:</strong> <%= @donor.name %></p>
+<p class="info"><strong>Address:</strong> <%= @donor.address %></p>
+<p class="info"><strong>Phone:</strong> <a><%= @donor.phone %></a></p>
+<p class="info"><strong>Email:</strong> <%= @donor.email %></p>
+<p class="info"><strong>Donated Products:</strong></p>
+<ul>
+	<% if @donor.products %>
+		<% @donor.products.collect do |a| %>
+		 <li><a href="/products/<%= a.id %>"><%= a.name %></a></li>
+		<% end %>
+	<% end %>
+</ul>
+
+<% if can? :update, @donors %><%= link_to 'Edit', edit_donor_path(@donor) %> |
+<% end %><%= link_to 'Back', donors_path %>
