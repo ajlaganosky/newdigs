@@ -1,9 +1,9 @@
 class UserController < ApplicationController
 before_filter :authenticate_user!
 
-user_signed_in?
+#user_signed_in?
 
-current_user
+#current_user
 
-user_session
+#user_session
 end
