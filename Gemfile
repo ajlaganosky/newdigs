@@ -1,11 +1,11 @@
-source 'https://rubygems.org'
+sudo gem unsource 'https://rubygems.org'
 
 gem 'rails', '3.2.9'
 
 # Bundle edge Rails instead:
 # gem 'rails', :git => 'git://github.com/rails/rails.git'
 
-gem 'pg'
+#gem 'pg'
 
 gem 'mysql2'
 
