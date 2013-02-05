@@ -18,7 +18,7 @@ class DonorsController < ApplicationController
   # GET /donors/1.json
   def show
     @donor = Donor.find(params[:id])
-    @product = Product.where(:donor_id == @donor)
+    @product = Product.find(:all, :conditions => { :donor_id => params[:id] })
     
     respond_to do |format|
       format.html # show.html.erb
