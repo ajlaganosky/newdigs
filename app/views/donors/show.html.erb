@@ -6,8 +6,8 @@
 <p class="info"><strong>Email:</strong> <%= @donor.email %></p>
 <p class="info"><strong>Donated Products:</strong></p>
 <ul>
-	<% if @donor.products %>
-		<% @donor.products.collect do |a| %>
+	<% if @products %>
+		<% @products.collect do |a| %>
 		 <li><a href="/products/<%= a.id %>"><%= a.name %></a></li>
 		<% end %>
 	<% end %>
