@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130205190653) do
+ActiveRecord::Schema.define(:version => 20130205192909) do
 
   create_table "agents", :force => true do |t|
     t.string   "email",                                 :null => false
@@ -40,6 +40,7 @@ ActiveRecord::Schema.define(:version => 20130205190653) do
     t.string   "name"
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
+    t.boolean  "wishlist"
   end
 
   add_index "categories", ["id"], :name => "index_categories_on_id"
@@ -56,6 +57,7 @@ ActiveRecord::Schema.define(:version => 20130205190653) do
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
     t.string   "user_id"
+    t.string   "county"
   end
 
   create_table "donors", :force => true do |t|
@@ -141,6 +143,7 @@ ActiveRecord::Schema.define(:version => 20130205190653) do
     t.string   "category_id"
     t.string   "pickup_list_id"
     t.integer  "donor_id"
+    t.boolean  "wishlist"
   end
 
   add_index "products", ["id"], :name => "index_products_on_id"
@@ -166,6 +169,7 @@ ActiveRecord::Schema.define(:version => 20130205190653) do
     t.datetime "created_at",                            :null => false
     t.datetime "updated_at",                            :null => false
     t.integer  "role_id"
+    t.string   "name"
   end
 
   add_index "users", ["email"], :name => "index_users_on_email", :unique => true
