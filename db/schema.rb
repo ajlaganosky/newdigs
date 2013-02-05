@@ -11,11 +11,11 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130130140401) do
+ActiveRecord::Schema.define(:version => 20130205184338) do
 
   create_table "agents", :force => true do |t|
-    t.string   "email",                  :default => "", :null => false
-    t.string   "encrypted_password",     :default => "", :null => false
+    t.string   "email",                                 :null => false
+    t.string   "encrypted_password",                    :null => false
     t.string   "reset_password_token"
     t.datetime "reset_password_sent_at"
     t.datetime "remember_created_at"
@@ -24,8 +24,8 @@ ActiveRecord::Schema.define(:version => 20130130140401) do
     t.datetime "last_sign_in_at"
     t.string   "current_sign_in_ip"
     t.string   "last_sign_in_ip"
-    t.datetime "created_at",                             :null => false
-    t.datetime "updated_at",                             :null => false
+    t.datetime "created_at",                            :null => false
+    t.datetime "updated_at",                            :null => false
   end
 
   add_index "agents", ["email"], :name => "index_agents_on_email", :unique => true
@@ -137,7 +137,7 @@ ActiveRecord::Schema.define(:version => 20130130140401) do
     t.boolean  "accepted"
     t.boolean  "declined"
     t.text     "reason"
-    t.string   "donor_id"
+    t.integer  "donor_id"
     t.string   "event_id"
     t.string   "category_id"
     t.string   "pickup_list_id"
@@ -153,8 +153,8 @@ ActiveRecord::Schema.define(:version => 20130130140401) do
   end
 
   create_table "users", :force => true do |t|
-    t.string   "email",                  :default => "", :null => false
-    t.string   "encrypted_password",     :default => "", :null => false
+    t.string   "email",                                 :null => false
+    t.string   "encrypted_password",                    :null => false
     t.string   "reset_password_token"
     t.datetime "reset_password_sent_at"
     t.datetime "remember_created_at"
@@ -163,8 +163,8 @@ ActiveRecord::Schema.define(:version => 20130130140401) do
     t.datetime "last_sign_in_at"
     t.string   "current_sign_in_ip"
     t.string   "last_sign_in_ip"
-    t.datetime "created_at",                             :null => false
-    t.datetime "updated_at",                             :null => false
+    t.datetime "created_at",                            :null => false
+    t.datetime "updated_at",                            :null => false
     t.integer  "role_id"
   end
 
