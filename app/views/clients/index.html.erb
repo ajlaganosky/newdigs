@@ -15,7 +15,7 @@
 	    <% end %>
 	    <strong>Phone</strong>
 	    <p><%= number_to_phone(client.phone, :area_code => true) %></p>
-	    <% if client.email %>
+	    <% if client.email != "" %>
 	    <strong>Email</strong>
 	    <p><%= client.email %></p>
 	    <% end %>
