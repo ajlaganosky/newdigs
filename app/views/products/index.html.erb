@@ -10,7 +10,7 @@
 	    <p><%= product.name %></p>
 	    <strong>Inventoried?</strong>
 	    <p><% if product.inventory == false %>No<% else %>Yes<% end %></p>
-	    <% if product.category_id %>
+	    <% if !product.category_id == "" %>
 		    <strong>Category</strong>
 			<p><%= product.category.name %></p>
 		<% end %>
