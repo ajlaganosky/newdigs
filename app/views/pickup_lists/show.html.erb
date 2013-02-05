@@ -7,6 +7,7 @@
 		<a href="/picked_up/<%= @pickup_list.id %>/<%= product.id %>"><%= product.name %></a><br />
 	<% end %>
 	<br />
-	
-<%= link_to 'Edit', edit_pickup_list_path(@pickup_list) %> |
+<div class="clearfix individualcontrols">	
+<%= link_to 'Edit', edit_pickup_list_path(@pickup_list) %>
 <%= link_to 'Back', pickup_lists_path %>
+</div>

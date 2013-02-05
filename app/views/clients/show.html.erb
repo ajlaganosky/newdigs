@@ -4,18 +4,22 @@
     <strong>Name</strong>
     <p><%= @client.name %></p>
 
+	<% if !@client.address == "" %>
     <strong>Address</strong>
     <p><%= @client.address %></p>
+    <% end %>
 
+	<% if !@client.phone == "" %>
     <strong>Phone</strong>
     <p><%= @client.phone %></p>
+	<% end %>
 	
-	<% if @client.email %>
+	<% if !@client.email == "" %>
     	<strong>Email</strong>
     	<p><%= @client.email %></p>
     <% end %>
 
-    <% if @client.user_id %>
+    <% if !@client.user_id == "" %>
 		<strong>Referring Agent</strong>
 		<p><%= @client.user.email %></p>
 	<% end %>
@@ -26,25 +30,23 @@
     <strong>Children</strong>
     <p><%= @client.children %></p>
 
-    <% if @client.notes %>
+    <% if !@client.history == "" %>
 	    <strong>History</strong>
 	    <p><%= @client.history %></p>
 	<% end %>
 	
-    <% if @client.notes %>
+    <% if !@client.notes == "" %>
 	    <strong>Notes</strong>
 	    <p><%= @client.notes %></p>
     <% end %>
 
   <div class="clearfix individualcontrols">
-    <%= link_to 'Back', clients_path %><% if can? :update, @clients %> &bull;
-    <%= link_to 'Edit', edit_client_path(@client) %><% end %><% if can? :destroy, @clients %> &bull;
-    <%= link_to 'Destroy', @client, method: :delete, data: { confirm: 'Are you sure?' } %><% end %><% if can? :create, @pickup_lists %> &bull;
+    <%= link_to 'Back', clients_path %><% if can? :update, @clients %>
+    <%= link_to 'Edit', edit_client_path(@client) %><% end %><% if can? :destroy, @clients %>    <%= link_to 'Destroy', @client, method: :delete, data: { confirm: 'Are you sure?' } %><% end %><% if can? :create, @pickup_lists %>
     <%= link_to 'New List', controller: :pickup_lists, action: :new, client_id: @client.id %>
-<% end %><% if can? :create, @events %> &bull;
+<% end %><% if can? :create, @events %> <br />
     <a href="/events/new_with_client/<%= @client.id %>">New appointment for <%= @client.name %></a><% end %>
     <br />
-    &bull;
     <a href="/pickup_lists/<%= @client.id %>">Existing List</a>
   </div>
   </article>

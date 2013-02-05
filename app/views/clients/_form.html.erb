@@ -36,6 +36,10 @@
     <%= f.select :children, (0..10) %>
   </div>
   <div class="field">
+  	<%= f.label :county %>
+  	<%= f.select :county, ("Adams", "Cumberland", "Dauphin", "Lancaster", "Lebanon", "Perry", "York", {:include_blank => 'Select a County'}) %>
+  </div>
+  <div class="field">
     <%= f.label :history %><br />
     <%= f.text_area :history %>
   </div>
@@ -45,7 +49,7 @@
   </div>
   <div class="field">
   	<%= f.label :user_id %><br />
-    <%= f.collection_select(:user_id, User.all, :id, :email, {:include_blank => 'Referring Agent'}) %>
+    <%= f.collection_select(:user_id, User.all, :id, :name, {:include_blank => 'Referring Agent'}) %>
   </div>
   <div class="actions">
     <%= f.submit %>

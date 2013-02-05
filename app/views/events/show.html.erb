@@ -22,6 +22,6 @@
 <%= simple_format @event.content %>
 </blockquote>
 	  <div class="clearfix individualcontrols">
-<% if can? :update, @event %>  <%= link_to "Edit Entry", edit_event_path(@event) %> |<% end %>
+<% if can? :update, @event %>  <%= link_to "Edit Entry", edit_event_path(@event) %> <% end %>
   <%= link_to "Back to Calendar", events_path %>
 </div>

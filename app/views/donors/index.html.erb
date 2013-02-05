@@ -11,8 +11,8 @@
     <p><strong>Phone:</strong> <%= number_to_phone(donor.phone, :delimiter => ".") %></p>
     <p><strong>Email:</strong> <%= link_to 'Email', 'mailto: ' + donor.email %></p>
 	  <div class="clearfix individualcontrols">
-    <%= link_to 'Show', donor %><% if can? :update, @donors %> | 
-    <%= link_to 'Edit', edit_donor_path(donor) %><% end %><% if can? :destroy, @donors %> | 
+    <%= link_to 'Show', donor %><% if can? :update, @donors %> 
+    <%= link_to 'Edit', edit_donor_path(donor) %><% end %><% if can? :destroy, @donors %> 
     <%= link_to 'Destroy', donor, method: :delete, data: { confirm: 'Are you sure?' } %><% end %></div>
   </article>
 <% end %>
