@@ -21,7 +21,7 @@
 		    <% end %>
 	    </ul>
     </section>
-    <% if @event.expiration_date? %>
+    <% if @event.expiration_date.exists? %>
     <section>
     	<h2>Events Happening Today</h2>
 		    <ul>
