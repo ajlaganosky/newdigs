@@ -21,12 +21,11 @@
 		    <% end %>
 	    </ul>
     </section>
-    <% if @event.expiration_date.exists? %>
     <section>
     	<h2>Events Happening Today</h2>
 		    <ul>
 			    <% @events.each do |event| %>
-			    	<% if Date.today == event.expiration_date.to_date %>
+			    	<% if Date.today == event.expiration_date %>
 				    <li>
 					    <%= link_to event.name, event %>
 					</li>
@@ -35,7 +34,6 @@
 			</ul>
 		    
     </section>
-    <% end %>
     <%= link_to "Inventoried Items", products_path %>
 
 	<% end %>
