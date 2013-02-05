@@ -23,7 +23,9 @@ class PickupListsController < ApplicationController
   # GET /pickup_lists/1
   # GET /pickup_lists/1.json
   def show
-  	@pickup_list = PickupList.find(params[:id])
+  	@client = Client.find(params[:client_id])
+  	@pickup_list = PickupList.where(:client_id => @client)
+  	@pickup_list = @pickup_list.last
 
     respond_to do |format|
       format.html # show.html.erb
@@ -35,7 +37,8 @@ class PickupListsController < ApplicationController
   	@client = Client.find(params[:client_id])
     @pickup_list = PickupList.new
     @pickup_list.client_id = @client.id
-    @product = Product.where(:inventory => true).find(:all, :order => 'category_id')    
+    @product = Product.where(:inventory => true).find(:all, :order => 'category_id')
+    @category = Category.all    
   end
   
   # GET /pickup_lists/new
@@ -45,12 +48,16 @@ class PickupListsController < ApplicationController
   	@client = Client.find(params[:client_id])
     @pickup_list.client_id = @client.id
     @product = Product.where(:inventory => true).find(:all, :order => 'category_id')    
+    @category = Category.all    
   end
 
   # GET /pickup_lists/1/edit
   def edit
-    @pickup_list = PickupList.edit
- #   @product = Product.all
+    @pickup_list = PickupList.find(params[:id])
+    @client = Client.find(params[:client_id])
+    @product = Product.where(:inventory => true).find(:all, :order => 'category_id')    
+    @category = Category.all 
+       
   end
 
   # POST /pickup_lists
@@ -63,7 +70,7 @@ class PickupListsController < ApplicationController
   			@pickup_list.products << Product.find(product)
         	
     	end
-    	redirect_to "/pickup_lists"
+    	redirect_to :action => "show", :id => @pickup_list.client.id
     else
     	render action: "new"
     end
@@ -76,15 +83,22 @@ class PickupListsController < ApplicationController
     @pickup_list = PickupList.find(params[:id])
     @product = Product.all
 
-    respond_to do |format|
-      if @pickup_list.update_attributes(params[:pickup_list])
-        format.html { redirect_to PickupList, notice: 'Pickup list was successfully updated.' }
-        format.json { head :no_content }
-      else
-        format.html { render action: "edit" }
-        format.json { render json: PickupList.errors, status: :unprocessable_entity }
-      end
+        if @pickup_list.update_attributes(params[:pickup_list])
+  		params[:product_id].each do |product|
+  			@pickup_list.products << Product.find(product)
+  		end
+		
+    	redirect_to :action => "show", :id => @pickup_list.client.id
     end
+
+#      if @pickup_list.update_attributes(params[:pickup_list])
+#        format.html { redirect_to PickupList, notice: 'Pickup list was successfully updated.' }
+#        format.json { head :no_content }
+#      else
+#        format.html { render action: "edit" }
+#        format.json { render json: PickupList.errors, status: :unprocessable_entity }
+#      end
+#    end
   end
 
   # DELETE /pickup_lists/1

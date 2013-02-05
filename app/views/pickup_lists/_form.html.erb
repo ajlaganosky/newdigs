@@ -18,7 +18,7 @@
   	<% @product.each do |c| %>
   		<li class="checklist">
 	  <%= check_box_tag "product_id[]", c.id %>
-	  <%= h c.name %> &bull; <%= h c.category.name %>
+	  <%= h c.name %>
 	    </li>
 	<% end %>
   </ul>

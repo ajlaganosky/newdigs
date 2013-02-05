@@ -8,6 +8,6 @@
 	<% end %>
 	<br />
 <div class="clearfix individualcontrols">	
-<%= link_to 'Edit', edit_pickup_list_path(@pickup_list) %>
+<a href="/pickup_lists/<%= @pickup_list.id %>/edit/<%= @client.id %>">Edit</a>
 <%= link_to 'Back', pickup_lists_path %>
 </div>

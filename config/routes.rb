@@ -1,5 +1,9 @@
 Inventory::Application.routes.draw do
 
+  match 'pickup_lists/:id/edit/:client_id' => 'pickup_lists#edit'
+
+  match 'pickup_lists/:client_id' => 'pickup_lists#show'
+
   match 'picked_up/:pickup_list_id/:product_id' => 'picked_up#pickup'
 
   resources :wish_list_items
