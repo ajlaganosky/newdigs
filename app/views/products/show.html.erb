@@ -33,7 +33,7 @@
     <p><%= @product.reason %></p>
     <% end %>
   </div>
-  <div class="clearfix">
+  <div class="clearfix individualcontrols">
     <%= link_to 'Back', products_path %><% if can? :update, @products %> &bull;
     <%= link_to 'Edit', edit_product_path(@product) %><% end %><% if can? :destroy, @products %> &bull;
     <%= link_to 'Destroy', @product, method: :delete, data: { confirm: 'Are you sure?' } %><% end %><% if can? :create, @events %> &bull;
