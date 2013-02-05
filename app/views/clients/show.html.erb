@@ -9,9 +9,11 @@
 
     <strong>Phone</strong>
     <p><%= @client.phone %></p>
-
-    <strong>Email</strong>
-    <p><%= @client.email %></p>
+	
+	<% if @client.email %>
+    	<strong>Email</strong>
+    	<p><%= @client.email %></p>
+    <% end %>
 
     <% if @client.user_id %>
 		<strong>Referring Agent</strong>

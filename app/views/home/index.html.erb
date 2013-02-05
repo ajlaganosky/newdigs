@@ -21,6 +21,7 @@
 		    <% end %>
 	    </ul>
     </section>
+    <% if @event.expiration_date? %>
     <section>
     	<h2>Events Happening Today</h2>
 		    <ul>
@@ -34,6 +35,7 @@
 			</ul>
 		    
     </section>
+    <% end %>
     <%= link_to "Inventoried Items", products_path %>
 
 	<% end %>
