@@ -7,9 +7,11 @@
   <article class="productlist">
 	    <strong>Name</strong>
 	    <p><%= client.name %></p>
+	    <% if client.address != "" %>
 	    <strong>Address</strong>
 	    <p><%= client.address %></p>
-	    <% if client.county != "Select a County" %>
+		<% end %>
+		<% if client.county != "" %>
 	    <strong>County</strong>
 	    <p><%= client.county %></p>
 	    <% end %>

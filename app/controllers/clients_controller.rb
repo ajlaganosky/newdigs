@@ -6,7 +6,7 @@ class ClientsController < ApplicationController
   # GET /clients
   # GET /clients.json
   def index
-    @clients = Client.all
+    @clients = Client.find(:all, :order => 'name asc')
     @users = User.all
 #    @pickup_lists = Pickup_list.all
 
