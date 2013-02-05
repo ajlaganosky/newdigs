@@ -4,7 +4,7 @@
   <div class="column1">
     <strong>Name</strong>
     <p><%= @product.name %></p>
-    <% if !@product.location == "" %>
+    <% if @product.location != "" %>
     <strong>Location</strong>
     <p><%= @product.location %></p>
     <% end %>
@@ -16,7 +16,7 @@
     <strong>Donor</strong>
 	<p><%= @product.donor.name %></p>
 	<% end %>
-	<% if !@product.category_id == "" %>
+	<% if @product.category_id != "" %>
 	<strong>Category</strong>
 	<p><%= @product.category.name %></p>
 	<% end %>
@@ -26,6 +26,8 @@
     <p><%# if @product.delivery == false %>No<%# else %>Yes<%# end %></p>
     <strong>Picked Up?</strong>
     <p><%# if @product.pickup == false %>No<%# else %>Yes<%# end %></p> -->
+    <strong>Wishlist Item?</strong>
+    <p><% if @product.wishlist == false %>No<% else %>Yes<% end %></p>
     <strong>Accepted?</strong>
     <p><% if @product.accepted == false %>No<% else %>Yes<% end %></p>
     <% if @product.accepted == false %>
