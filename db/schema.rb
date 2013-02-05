@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130205192909) do
+ActiveRecord::Schema.define(:version => 20130205222756) do
 
   create_table "agents", :force => true do |t|
     t.string   "email",                                 :null => false
@@ -119,10 +119,10 @@ ActiveRecord::Schema.define(:version => 20130205192909) do
   add_index "pickup_list_products", ["product_id"], :name => "index_pickup_list_products_on_product_id"
 
   create_table "pickup_lists", :force => true do |t|
-    t.string   "client_id"
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
     t.string   "product_id"
+    t.integer  "client_id"
   end
 
   add_index "pickup_lists", ["id"], :name => "index_pickup_lists_on_id"
