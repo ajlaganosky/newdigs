@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130205184338) do
+ActiveRecord::Schema.define(:version => 20130205190653) do
 
   create_table "agents", :force => true do |t|
     t.string   "email",                                 :null => false
@@ -137,10 +137,10 @@ ActiveRecord::Schema.define(:version => 20130205184338) do
     t.boolean  "accepted"
     t.boolean  "declined"
     t.text     "reason"
-    t.integer  "donor_id"
     t.string   "event_id"
     t.string   "category_id"
     t.string   "pickup_list_id"
+    t.integer  "donor_id"
   end
 
   add_index "products", ["id"], :name => "index_products_on_id"
