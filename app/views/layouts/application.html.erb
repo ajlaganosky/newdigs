@@ -19,7 +19,7 @@
 
 <p class="alert">
 	<% if user_signed_in? %>
-        Signed in as <% if can? :update, @user %><%= link_to current_user.name, edit_user_registration_path %><% else %><%= current_user.email %><% end %>. 
+        Signed in as <% if can? :update, @user %><%= link_to current_user.name, edit_user_registration_path %><% else %><%= current_user.name %><% end %>. 
         | <a href="/">Home</a> | <%= link_to 'Inventory', products_path %> | <%= link_to 'Clients', clients_path %> | <%= link_to 'Calendar', events_path %> | <%= link_to 'Donors', donors_path %> | <%= link_to 'Sign out', destroy_user_session_path, :method => :delete %>
     <% end %><br />
     <span class="alert-error">

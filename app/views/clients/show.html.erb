@@ -26,7 +26,7 @@
 
     <% if @client.user_id != "" %>
 		<strong>Referring Agent</strong>
-		<p><%= link_to "@client.user.name", 'mailto: ' + @client.user.email %></p>
+		<p><%= link_to @client.user.name.to_s, 'mailto: ' + @client.user.email %></p>
 	<% end %>
 
     <strong>Adults</strong>
