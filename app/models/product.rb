@@ -1,5 +1,5 @@
 class Product < ActiveRecord::Base
-  attr_accessible :name, :location, :price, :inventory, :donor, :delivery, :pickup, :accepted, :declined, :reason, :product_id, :product_name, :donor_id, :event_id, :category_id, :pickup_list_id
+  attr_accessible :name, :location, :price, :inventory, :donor, :delivery, :pickup, :accepted, :declined, :reason, :product_id, :product_name, :donor_id, :event_id, :category_id, :pickup_list_id, :wishlist
   belongs_to :donor
   belongs_to :event
   accepts_nested_attributes_for :donor

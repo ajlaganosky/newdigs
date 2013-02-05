@@ -20,6 +20,10 @@
     <%= f.text_field :address %>
   </div>
   <div class="field">
+  	<%= f.label :county %><br />
+  	<%= f.select :county, ["Adams", "Cumberland", "Dauphin", "Lancaster", "Lebanon", "Perry", "York"] %>
+  </div>
+  <div class="field">
     <%= f.label :phone %><br />
     <%= f.text_field :phone %>
   </div>
@@ -34,10 +38,6 @@
   <div class="field">
     <%= f.label :children %><br />
     <%= f.select :children, (0..10) %>
-  </div>
-  <div class="field">
-  	<%= f.label :county %>
-  	<%= f.select :county, ("Adams", "Cumberland", "Dauphin", "Lancaster", "Lebanon", "Perry", "York", {:include_blank => 'Select a County'}) %>
   </div>
   <div class="field">
     <%= f.label :history %><br />

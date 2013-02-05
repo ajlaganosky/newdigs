@@ -4,24 +4,29 @@
     <strong>Name</strong>
     <p><%= @client.name %></p>
 
-	<% if !@client.address == "" %>
+	<% if @client.address != "" %>
     <strong>Address</strong>
     <p><%= @client.address %></p>
     <% end %>
 
-	<% if !@client.phone == "" %>
+	<% if @client.county  %>
+    <strong>County</strong>
+    <p><%= @client.county %></p>
+    <% end %>
+
+	<% if @client.phone != "" %>
     <strong>Phone</strong>
-    <p><%= @client.phone %></p>
+    <p><%= number_to_phone(@client.phone, :area_code => true) %></p>
 	<% end %>
 	
-	<% if !@client.email == "" %>
+	<% if @client.email != "" %>
     	<strong>Email</strong>
     	<p><%= @client.email %></p>
     <% end %>
 
-    <% if !@client.user_id == "" %>
+    <% if @client.user_id != "" %>
 		<strong>Referring Agent</strong>
-		<p><%= @client.user.email %></p>
+		<p><%= link_to "@client.user.name", 'mailto: ' + @client.user.email %></p>
 	<% end %>
 
     <strong>Adults</strong>
@@ -30,12 +35,12 @@
     <strong>Children</strong>
     <p><%= @client.children %></p>
 
-    <% if !@client.history == "" %>
+    <% if @client.history != "" %>
 	    <strong>History</strong>
 	    <p><%= @client.history %></p>
 	<% end %>
 	
-    <% if !@client.notes == "" %>
+    <% if @client.notes != "" %>
 	    <strong>Notes</strong>
 	    <p><%= @client.notes %></p>
     <% end %>

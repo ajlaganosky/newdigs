@@ -9,8 +9,12 @@
 	    <p><%= client.name %></p>
 	    <strong>Address</strong>
 	    <p><%= client.address %></p>
+	    <% if client.county != "Select a County" %>
+	    <strong>County</strong>
+	    <p><%= client.county %></p>
+	    <% end %>
 	    <strong>Phone</strong>
-	    <p><%= client.phone %></p>
+	    <p><%= number_to_phone(client.phone, :area_code => true) %></p>
 	    <% if client.email %>
 	    <strong>Email</strong>
 	    <p><%= client.email %></p>
@@ -19,11 +23,11 @@
 		<p><%= client.adults %></p>
 	    <strong>Children</strong>
 		<p><%= client.children %></p>
-	    <% if client.history %>
+	    <% if client.history != "" %>
 	    <strong>History</strong>
 		<p><%= truncate(client.history, :length => 80) %></p>
 		<% end %>
-	    <% if client.notes %>
+	    <% if client.notes != "" %>
 	    <strong>Notes</strong>
 		<p><%= truncate(client.notes, :length => 80) %></p>
 		<% end %>
