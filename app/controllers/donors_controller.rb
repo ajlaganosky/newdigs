@@ -18,8 +18,8 @@ class DonorsController < ApplicationController
   # GET /donors/1.json
   def show
     @donor = Donor.find(params[:id])
-    @donor = @donor.to_str
-    @product = Product.find(:all, :conditions => { :donor_id => @donor })
+    @donorstring = @donor.to_s()
+    @product = Product.find(:all, :conditions => { :donor_id => @donorstring })
     
     respond_to do |format|
       format.html # show.html.erb
