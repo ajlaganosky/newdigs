@@ -14,7 +14,7 @@
     <strong>Donor</strong>
 	<p><%= @product.donor.name %></p>
 	<% end %>
-	<% if @product.category_id %>
+	<% if !@product.category_id == "" %>
 	<strong>Category</strong>
 	<p><%= @product.category.name %></p>
 	<% end %>
