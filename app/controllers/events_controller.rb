@@ -6,6 +6,7 @@ class EventsController < ApplicationController
     @events_by_date = @events.group_by(&:published_on)
     @expiration_date = @events.group_by(&:expiration_date)
     @date = params[:date] ? Date.parse(params[:date]) : Date.today
+    
   end
 	# show show show show show show show show show show show show show show show
   def show
@@ -49,6 +50,13 @@ class EventsController < ApplicationController
   
   def filter
   	@event = Event.where(:status => params[:status])
+  end
+  
+  def day
+    @dates = Date.parse(params[:date])
+    @date = Date.parse(params[:date]).strftime("%m%d%Y")
+    @datedb = @dates.strftime("%Y-%m-%d")
+  	@events = Event.where(:expiration_date => @datedb)
   end
   
 end
