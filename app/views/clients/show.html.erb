@@ -47,12 +47,15 @@
 
   <div class="clearfix individualcontrols">
     <%= link_to 'Back', clients_path %><% if can? :update, @clients %>
-    <%= link_to 'Edit', edit_client_path(@client) %><% end %><% if can? :destroy, @clients %>    <%= link_to 'Destroy', @client, method: :delete, data: { confirm: 'Are you sure?' } %><% end %><% if can? :create, @pickup_lists %>
+    <%= link_to 'Edit', edit_client_path(@client) %><% end %><% if can? :destroy, @clients %>    <%= link_to 'Destroy', @client, method: :delete, data: { confirm: 'Are you sure?' } %><% end %>  <% if @pickuplist.count == 0 %>
+<% if can? :create, @pickup_lists %>
     <a href="/pickup_lists/new/<%= @client.id %>">New List for <%= @client.name %></a>
+<% end %>
 <% end %><% if can? :create, @events %> <br />
     <a href="/events/new_with_client/<%= @client.id %>">New appointment for <%= @client.name %></a><% end %>
     <br />
+  <% if @pickuplist.count > 0 %>
     <a href="/pickup_lists/<%= @client.id %>">Existing List</a>
+  <% end %>
   </div>
   </article>
-  

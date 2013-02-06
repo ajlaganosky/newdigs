@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130205222756) do
+ActiveRecord::Schema.define(:version => 20130206192443) do
 
   create_table "agents", :force => true do |t|
     t.string   "email",                                 :null => false
@@ -74,8 +74,8 @@ ActiveRecord::Schema.define(:version => 20130205222756) do
   add_index "donors", ["id"], :name => "index_donors_on_id"
 
   create_table "events", :force => true do |t|
-    t.datetime "created_at",      :null => false
-    t.datetime "updated_at",      :null => false
+    t.datetime "created_at",          :null => false
+    t.datetime "updated_at",          :null => false
     t.string   "name"
     t.date     "published_on"
     t.text     "content"
@@ -84,6 +84,7 @@ ActiveRecord::Schema.define(:version => 20130205222756) do
     t.string   "client_id"
     t.string   "start_time"
     t.string   "end_time"
+    t.integer  "event_categories_id"
   end
 
   add_index "events", ["id"], :name => "index_events_on_id"

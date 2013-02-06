@@ -9,8 +9,8 @@
   </h2>
   <%= calendar @date do |date| %>
     <%= date.day %><br /><br />
-    <% if @events_by_date[date] %>
-          <%= link_to "#{@events_by_date[date].count} Event(s) Occurring Today.", :controller => 'events', :action => 'day', :date => date %>
+    <% if @expiration_date[date] %>
+          <%= link_to "#{@expiration_date[date].count} Event(s) Occurring Today.", :controller => 'events', :action => 'day', :date => date %>
     <% end %>
   <% end %>
 </div>

@@ -21,7 +21,8 @@ class ClientsController < ApplicationController
   def show
     @client = Client.find(params[:id])
     @user = User.all
-
+    @pickuplist = PickupList.where("client_id = ?", @client)
+    
     respond_to do |format|
       format.html # show.html.erb
       format.json { render json: @client }
