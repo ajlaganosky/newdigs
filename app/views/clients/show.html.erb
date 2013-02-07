@@ -55,7 +55,7 @@
     <a href="/events/new_with_client/<%= @client.id %>">New appointment for <%= @client.name %></a><% end %>
     <br />
   <% if @pickuplist.count > 0 %>
-    <a href="/pickup_lists/<%= @client.id %>">Existing List</a>
+    <a href="/pickup_lists/<%= @client.id %>">Existing List for <%= @client.name %></a>
   <% end %>
   </div>
   </article>

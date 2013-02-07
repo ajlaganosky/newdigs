@@ -11,29 +11,37 @@
    </section>
     
     <% if user_signed_in? %>
-    <section>
+ <!--    <section>
     	<h2>All Products</h2>
 	    <ul>
-		    <% @products.each do |product| %>
+		    <%# @products.each do |product| %>
 			    <li>
-				    <%= link_to product.name, product %>
+				    <%#= link_to product.name, product %>
 			    </li>
-		    <% end %>
+		    <%# end %>
 	    </ul>
-    </section>
+    </section -->
    
     <section>
     	<h2>Events Happening Today</h2>
-		    <ul>
+<table class="table table-bordered table-condensed table-striped table-hover">
+<thead>
+<tr>
+<th>Name</th>
+</tr>
+</thead>
+<tbody>
 			    <% @events.each do |event| %>
+			    <tr>
 			    	<% if Date.today == event.expiration_date %>
-				    <li>
+				    <td>
 					    <%= link_to event.name, event %>
-					</li>
+					</td>
 				    <% end %>
+				 </tr>
 			    <% end %>
-			</ul>
-	    
+</tbody>
+</table>	    
     </section>
     <%= link_to "Inventoried Items", products_path %>
 

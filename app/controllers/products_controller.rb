@@ -8,6 +8,7 @@ class ProductsController < ApplicationController
 	@products = Product.where(:inventory => true).find(:all, :order => 'category_id')
     @donors = Donor.all
     @categories = Category.all
+    @products2 = Product.where(:inventory => false).find(:all, :order => 'category_id')
 
     respond_to do |format|
       format.html # index.html.erb

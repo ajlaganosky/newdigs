@@ -3,41 +3,65 @@
 <%= link_to 'New Client', new_client_path %>
 </div>
 <section>
+<h2>Inventoried Items</h2>
+<table class="table table-bordered table-condensed table-striped table-hover">
+<thead>
+<tr>
+<th>Name</th>
+<th>Address</th>
+<th>County</th>
+<th>Phone</th>
+<th>Email</th>
+<th>Referring Agent</th>
+<th># of Adults</th>
+<th># of Children</th>
+<th>History</th>
+<th>Notes</th>
+<th></th>
+<th></th>
+<th></th>
+</tr>
+</thead>
+<tbody>
 <% @clients.each do |client|%>
-  <article class="productlist">
-	    <strong>Name</strong>
-	    <p><%= client.name %></p>
-	    <% if client.address != "" %>
-	    <strong>Address</strong>
-	    <p><%= client.address %></p>
-		<% end %>
-		<% if client.county != "" %>
-	    <strong>County</strong>
-	    <p><%= client.county %></p>
-	    <% end %>
-	    <strong>Phone</strong>
-	    <p><%= number_to_phone(client.phone, :area_code => true) %></p>
-	    <% if client.email != "" %>
-	    <strong>Email</strong>
-	    <p><%= client.email %></p>
-	    <% end %>
-	    <strong>Adults</strong>
-		<p><%= client.adults %></p>
-	    <strong>Children</strong>
-		<p><%= client.children %></p>
-	    <% if client.history != "" %>
-	    <strong>History</strong>
-		<p><%= truncate(client.history, :length => 80) %></p>
-		<% end %>
-	    <% if client.notes != "" %>
-	    <strong>Notes</strong>
-		<p><%= truncate(client.notes, :length => 80) %></p>
-		<% end %>
-	  <div class="clearfix individualcontrols">
-	    <%= link_to 'Show', client %><% if can? :update, @clients %> 
-	    <%= link_to 'Edit', edit_client_path(client) %><% end %><% if can? :destroy, @clients %> 
-	    <%= link_to 'Destroy', client, method: :delete, data: { confirm: 'Are you sure?' } %> <% end %>
-	  </div>
-  </article>
+<tr>
+	    <td><%= client.name %></td>
+
+	    <td><% if client.address != "" %>
+	    <%= client.address %>
+		<% end %></td>
+
+		<td><% if client.county != "" %>
+	    <%= client.county %>
+	    <% end %></td>
+
+	    <td><%= number_to_phone(client.phone, :area_code => true) %></td>
+
+	    <td><% if client.email != "" %>
+	    <%= link_to "Email", 'mailto: ' + client.email %>
+	    <% end %></td>
+	    
+	    <td><% if client.user_id != "" %>
+	    <%= link_to client.user.name.to_s, 'mailto: ' + client.user.email %>
+	    <% end %></td>
+
+		<td><%= client.adults %></td>
+
+		<td><%= client.children %></td>
+
+	    <td><% if client.history != "" %>
+		<%= truncate(client.history, :length => 50) %>
+		<% end %></td>
+
+	    <td><% if client.notes != "" %>
+		<%= truncate(client.notes, :length => 50) %>
+		<% end %></td>
+
+	    <td><%= link_to 'Show', client %><% if can? :update, @clients %> </td>
+	    <td><%= link_to 'Edit', edit_client_path(client) %><% end %><% if can? :destroy, @clients %> </td>
+	    <td><%= link_to 'Destroy', client, method: :delete, data: { confirm: 'Are you sure?' } %> <% end %></td>
+</tr>
 <% end %>
+</tbody>
+</table>
 </section>
