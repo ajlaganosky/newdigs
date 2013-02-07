@@ -2,8 +2,6 @@
 <div class="clearfix">
 <%= link_to 'New Client', new_client_path %>
 </div>
-<section>
-<h2>Inventoried Items</h2>
 <table class="table table-bordered table-condensed table-striped table-hover">
 <thead>
 <tr>
@@ -57,11 +55,10 @@
 		<%= truncate(client.notes, :length => 50) %>
 		<% end %></td>
 
-	    <td><%= link_to 'Show', client %><% if can? :update, @clients %> </td>
-	    <td><%= link_to 'Edit', edit_client_path(client) %><% end %><% if can? :destroy, @clients %> </td>
-	    <td><%= link_to 'Destroy', client, method: :delete, data: { confirm: 'Are you sure?' } %> <% end %></td>
+	    <td><%= link_to 'Show', client, :class => 'btn btn-info' %><% if can? :update, @clients %> </td>
+	    <td><%= link_to 'Edit', edit_client_path(client), :class => 'btn btn-warning' %><% end %><% if can? :destroy, @clients %> </td>
+	    <td><%= link_to 'Destroy', client, method: :delete, data: { confirm: 'Are you sure?' }, :class => 'btn btn-danger' %> <% end %></td>
 </tr>
 <% end %>
 </tbody>
 </table>
-</section>
