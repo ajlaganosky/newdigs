@@ -98,8 +98,9 @@ class ClientsController < ApplicationController
     end
   end
   
-  def new_event
-  	
+  def pickup_lists
+  	@client = Client.find(params[:id])
+  	@pickup_lists = @client.pickup_lists
   end
   
 end

@@ -17,7 +17,13 @@
   <ul>
   	<% @product.each do |c| %>
   		<li class="checklist">
-	  <%= check_box_tag "product_id[]", c.id %>
+  		<% 
+  		inlist = false
+  		if PickupListProduct.where(:product_id => c.id).where(:pickup_list_id => @pickup_list.id).count > 0
+  			inlist = true
+  		end
+  		%>
+	  <%= check_box_tag "product_id[]", c.id, inlist %>
 	  <%= h c.name %>
 	    </li>
 	<% end %>

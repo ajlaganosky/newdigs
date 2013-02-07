@@ -23,9 +23,8 @@ class PickupListsController < ApplicationController
   # GET /pickup_lists/1
   # GET /pickup_lists/1.json
   def show
-  	@client = Client.find(params[:client_id])
-  	@pickup_list = PickupList.where(:client_id => @client)
-  	@pickup_list = @pickup_list.last
+  	@pickup_list = PickupList.find(params[:id])
+  	@client = @pickup_list.client
 
     respond_to do |format|
       format.html # show.html.erb
@@ -47,14 +46,14 @@ class PickupListsController < ApplicationController
     @pickup_list = PickupList.new
   	@client = Client.find(params[:client_id])
     @pickup_list.client_id = @client.id
-    @product = Product.where(:inventory => true).find(:all, :order => 'category_id')    
+    @product = Product.where(:inventory => true).where(:wishlist => false).find(:all, :order => 'category_id')    
     @category = Category.all    
   end
 
   # GET /pickup_lists/1/edit
   def edit
     @pickup_list = PickupList.find(params[:id])
-    @client = Client.find(params[:client_id])
+    @client = @pickup_list.client
     @product = Product.where(:inventory => true).find(:all, :order => 'category_id')    
     @category = Category.all 
        
@@ -85,11 +84,13 @@ class PickupListsController < ApplicationController
 
         if @pickup_list.update_attributes(params[:pickup_list])
   		params[:product_id].each do |product|
-  			@pickup_list.products << Product.find(product)
+  			if @pickup_list.products.where(:id => product).count == 0
+  			 @pickup_list.products << Product.find(product)
+  			end
   		end
 		
-    	redirect_to :action => "show", :id => @pickup_list.client.id
-    end
+    	redirect_to :action => "show", :id => @pickup_list
+   		end
 
 #      if @pickup_list.update_attributes(params[:pickup_list])
 #        format.html { redirect_to PickupList, notice: 'Pickup list was successfully updated.' }
