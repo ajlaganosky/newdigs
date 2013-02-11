@@ -28,6 +28,8 @@
 <thead>
 <tr>
 <th>Name</th>
+<th>Start Time</th>
+<th>End Time</th>
 </tr>
 </thead>
 <tbody>
@@ -36,6 +38,12 @@
 			    	<% if Date.today == event.expiration_date %>
 				    <td>
 					    <%= link_to event.name, event %>
+					</td>
+					<td>
+						<%= event.start_time.strftime("%l:%M %p") %>
+					</td>
+					<td>
+						<%= event.end_time.strftime("%l:%M %p") %>
 					</td>
 				    <% end %>
 				 </tr>
