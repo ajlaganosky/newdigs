@@ -1,0 +1,14 @@
+<h1>Pick-Up Lists</h1>
+
+  <article>
+    <p>
+    	<% @wishlists.each do |list| %>
+    		<%= link_to "List for #{Client.find(list.client_id).name}", list %><br/>
+    	<% end %>
+    </p>
+  </article>
+
+<br />
+
+<% #link_to 'Edit Pickup list', edit_client_wishlist_path 
+%>

@@ -2,8 +2,8 @@
 
 <p class="info"><strong>Name:</strong> <%= @donor.name %></p>
 <p class="info"><strong>Address:</strong> <%= @donor.address %></p>
-<p class="info"><strong>Phone:</strong> <a><%= @donor.phone %></a></p>
-<p class="info"><strong>Email:</strong> <%= @donor.email %></p>
+<p class="info"><strong>Phone:</strong> <%= number_to_phone(@donor.phone, :area_code => true, :delimiter => "-") %></p>
+<p class="info"><strong>Email:</strong> <%= mail_to @donor.email, "Email", :encode => "hex" %></p>
 <p class="info"><strong>Donated Products:</strong></p>
 <ul>
 	<% if @products %>
@@ -12,7 +12,5 @@
 		<% end %>
 	<% end %>
 </ul>
-	  <div class="clearfix individualcontrols">
-<% if can? :update, @donors %><%= link_to 'Edit', edit_donor_path(@donor) %>
-<% end %><%= link_to 'Back', donors_path %>
-</div>
+<% if can? :update, @donors %><%= link_to 'Edit', edit_donor_path(@donor), :class => "btn btn-warning" %>
+<% end %><%= link_to 'Back', donors_path, :class => "btn btn-inverse"  %>

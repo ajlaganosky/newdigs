@@ -1,5 +1,8 @@
 Inventory::Application.routes.draw do
 
+  resources :wishlists
+
+
   match 'events/day/:date' => 'events#day'
 
   match 'clients/pickup_lists/:id' => 'clients#pickup_lists'

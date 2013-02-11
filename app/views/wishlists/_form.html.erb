@@ -1,0 +1,36 @@
+<%= form_for(@wishlist) do |f| %>
+  <% if @wishlist.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@wishlist.errors.count, "error") %> prohibited this Pickup List from being saved:</h2>
+
+      <ul>
+      <% @wishlist.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <%= f.hidden_field :client_id %>
+
+  <div class="field">
+  <ul>
+  	<% @product.each do |c| %>
+  		<li class="checklist">
+  		<% 
+  		inlist = false
+  		if PickupListProduct.where(:product_id => c.id).where(:wishlist_id => @wishlist.id).count > 0
+  			inlist = true
+  		end
+  		%>
+	  <%= check_box_tag "product_id[]", c.id, inlist %>
+	  <%= h c.name %>
+	    </li>
+	<% end %>
+  </ul>
+  </div>
+
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

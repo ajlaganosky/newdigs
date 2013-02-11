@@ -1,0 +1,13 @@
+<p id="notice"><%= notice %></p>
+
+	<h1>Pickup List for <%= @wishlist.client.name %></h1>
+	<h3>Items</h3>
+	<h4>Click an item to remove it.</h4>
+	<% @wishlist.products.each do |product| %>
+		<a href="/picked_up/<%= @wishlist.id %>/<%= product.id %>"><%= product.name %></a><br />
+	<% end %>
+	<br />
+<div class="clearfix individualcontrols">
+<%= link_to 'Edit', edit_wishlist_path(@wishlist) %>	
+<%= link_to 'Back', client_path(@client) %>
+</div>

@@ -1,3 +1,4 @@
 class WishListItem < ActiveRecord::Base
-  attr_accessible :available, :category_id, :product_id, :timestamps
+  belongs_to :product
+  belongs_to :wishlist
 end
