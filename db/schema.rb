@@ -82,8 +82,8 @@ ActiveRecord::Schema.define(:version => 20130211185445) do
     t.date     "expiration_date"
     t.string   "product_id"
     t.string   "client_id"
-    t.time     "start_time"
-    t.time     "end_time"
+    t.string   "start_time"
+    t.string   "end_time"
   end
 
   add_index "events", ["id"], :name => "index_events_on_id"
