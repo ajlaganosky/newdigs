@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130211171732) do
+ActiveRecord::Schema.define(:version => 20130211185445) do
 
   create_table "agents", :force => true do |t|
     t.string   "email",                                 :null => false
@@ -82,8 +82,8 @@ ActiveRecord::Schema.define(:version => 20130211171732) do
     t.date     "expiration_date"
     t.string   "product_id"
     t.string   "client_id"
-    t.datetime "start_time"
-    t.datetime "end_time"
+    t.time     "start_time"
+    t.time     "end_time"
   end
 
   add_index "events", ["id"], :name => "index_events_on_id"

@@ -5,7 +5,7 @@ class Changeevents < ActiveRecord::Migration
   end
 
   def down
-	remove_column :events, :start_time
-  	remove_column :events, :end_time
+	change_column :events, :start_time, :string
+  	change_column :events, :end_time, :string
   end
 end
