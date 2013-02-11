@@ -7,7 +7,5 @@
 		<a href="/picked_up/<%= @pickup_list.id %>/<%= product.id %>"><%= product.name %></a><br />
 	<% end %>
 	<br />
-<div class="clearfix individualcontrols">
 <%= link_to 'Edit', edit_pickup_list_path(@pickup_list), :class => "btn btn-warning" %>	
 <%= link_to 'Back', client_path(@client), :class => "btn btn-inverse" %>
-</div>
