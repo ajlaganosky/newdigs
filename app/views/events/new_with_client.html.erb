@@ -25,7 +25,7 @@
 
   <div class="field">
     <%= f.label "Start Time" %><br />
-	<%= f.time_select :start_time, {:combined => true, :default => Time.now.change(:hour => 11, :min => 30), :minute_interval => 15, :time_separator => "", :start_hour => 8, :end_hour => 17 } %>
+	<%= f.time_select :start_time, {:combined => true, :default => Time.now.change(:hour => 8, :min => 00), :minute_interval => 15, :time_separator => "", :start_hour => 8, :end_hour => 17 } %>
   </div>
   <div class="field">
     <%= f.label "Expires On" %><br />
@@ -33,7 +33,7 @@
   </div>
   <div class="field">
     <%= f.label "End Time" %><br />
-	<%= f.time_select :end_time, {:combined => true, :default => Time.now.change(:hour => 11, :min => 30), :minute_interval => 15, :time_separator => "", :start_hour => 8, :end_hour => 17 } %>
+	<%= f.time_select :end_time, {:combined => true, :default => Time.now.change(:hour => 8, :min => 15), :minute_interval => 15, :time_separator => "", :start_hour => 8, :end_hour => 17 } %>
   </div>
   <div class="field">
     <%= f.label :content %><br />
