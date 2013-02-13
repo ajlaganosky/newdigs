@@ -53,7 +53,7 @@
     <br />
 <% if can? :create, @pickup_lists %>
     <a href="/pickup_lists/new/<%= @client.id %>">New List for <%= @client.name %></a><br />
-    <a href="/pickup_lists/<%= @pickuplist.last.id %>">Existing List for <%= @client.name %></a>
+    <a href="/pickup_lists/<%#= @pickuplist.last.id %>">Existing List for <%= @client.name %></a>
 <% end %>
   </div>
   </article>

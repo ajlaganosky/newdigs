@@ -20,10 +20,9 @@ class EventsController < ApplicationController
   end
 
 	# create create create create create create create create create create create create
-  def create
-  	params[:event].parse_time_select! :start_time
-  	params[:event].parse_time_select! :end_time
-    @event = Event.new(params[:event])
+def create
+	@event = Event.new params[:event]
+
     if @event.save
       redirect_to @event, notice: "Created Event."
     else
@@ -36,8 +35,6 @@ class EventsController < ApplicationController
   end
 
   def update
-  	params[:event].parse_time_select! :start_time
-  	params[:event].parse_time_select! :end_time
     @event = Event.find(params[:id])
     if @event.update_attributes(params[:event])
       redirect_to @event, notice: "Updated Event."
