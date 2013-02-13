@@ -55,3 +55,7 @@ display: inline !important;
 .reason {
 	display: none;
 }
+
+a:visted {
+	color: #fff !important;
+}

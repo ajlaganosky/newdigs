@@ -29,6 +29,27 @@ a {
   }
 }
 
+a.btn {
+  color: #fff;
+  &:visited {
+    color: #fff;
+  }
+  &:hover {
+    color: #000;
+  }
+}
+
+a.btn-inverse {
+  color: #fff;
+  &:visited {
+    color: #fff;
+  }
+  &:hover {
+    color: #CCC;
+  }
+}
+
+
 div {
   &.field, &.actions {
     margin-bottom: 10px;

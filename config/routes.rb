@@ -2,6 +2,7 @@ Inventory::Application.routes.draw do
 
   resources :wishlists
 
+  match 'wishlists/new/:client_id' => 'wishlists#new_with_client'
 
   match 'events/day/:date' => 'events#day'
 

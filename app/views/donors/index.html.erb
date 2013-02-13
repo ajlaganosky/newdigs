@@ -1,7 +1,7 @@
 <h1>Listing Donors</h1>
 
 <p class="clearfix">
-<% if can? :create, @donors %><%= link_to 'New Donor', new_donor_path %><% end %>
+<% if can? :create, @donors %><%= link_to 'New Donor', new_donor_path, :class => 'btn btn-success' %><% end %>
 </p>
 <table class="table table-bordered table-condensed table-striped table-hover">
 <thead>

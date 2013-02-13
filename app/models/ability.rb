@@ -16,18 +16,21 @@ class Ability
 	    can :read, :all if user.role_id == 1
 	    cannot [:read, :modify], User if user.role_id == 1
 	    can [:read, :manage], Client if user.role_id == 1
+	    cannot [:read, :modify], Category if user.role_id == 1
 
 	# PICKUP STAFF = 2
 	    can :manage, [Product, Event] if user.role_id == 2
 	    can :read, :all if user.role_id == 2
 	    cannot [:read, :modify], User if user.role_id == 2
 	    cannot [:read, :modify], Client if user.role_id == 2
+	    cannot [:read, :modify], Category if user.role_id == 2
 
 	# WAREHOUSE STAFF = 3
 	    can [:read, :manage], Product if user.role_id == 3
 	    cannot [:read, :modify], User if user.role_id == 3
 	    can :read, :all if user.role_id == 3
 	    cannot [:read, :modify], Client if user.role_id == 3
+	    cannot [:read, :modify], Category if user.role_id == 3
 
     # ADMIN = 4
 	    can :manage, :all if user.role_id == 4

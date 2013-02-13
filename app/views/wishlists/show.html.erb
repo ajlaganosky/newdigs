@@ -3,11 +3,19 @@
 	<h1>Pickup List for <%= @wishlist.client.name %></h1>
 	<h3>Items</h3>
 	<h4>Click an item to remove it.</h4>
+<table class="table table-bordered table-condensed table-striped table-hover">
+<thead>
+<tr>
+<th>Name</th>
+</tr>
+</thead>
+<tbody>
 	<% @wishlist.products.each do |product| %>
-		<a href="/picked_up/<%= @wishlist.id %>/<%= product.id %>"><%= product.name %></a><br />
-	<% end %>
-	<br />
-<div class="clearfix individualcontrols">
+	<tr>
+		<td><a href="/picked_up/<%= @wishlist.id %>/<%= product.id %>"><%= product.name %></a></td>
+	</tr>
+<% end %>
+</tbody>
+</table>
 <%= link_to 'Edit', edit_wishlist_path(@wishlist) %>	
 <%= link_to 'Back', client_path(@client) %>
-</div>

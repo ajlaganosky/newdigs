@@ -1,7 +1,7 @@
 <h1>Listing Clients</h1>
-<div class="clearfix">
-<%= link_to 'New Client', new_client_path %>
-</div>
+<%= link_to 'New Client', new_client_path, :class => 'btn btn-success' %>
+<br />
+<br />
 <table class="table table-bordered table-condensed table-striped table-hover">
 <thead>
 <tr>
@@ -23,7 +23,7 @@
 <tbody>
 <% @clients.each do |client|%>
 <tr>
-	    <td><%= client.name %></td>
+	    <td><%= client.name %><% if client.lastname? %> <%= client.lastname %><% end %></td>
 
 	    <td><% if client.address != "" %>
 	    <%= client.address %>

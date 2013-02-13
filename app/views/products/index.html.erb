@@ -1,6 +1,6 @@
 <h1>Listing Inventory</h1>
 	    <% if can? :create, @products %> 
-			<%= link_to 'New Product', new_product_path %>
+			<%= link_to 'New Product', new_product_path, :class => 'btn btn-success' %>
 		<% end %>	
 <section>
 <h2>Inventoried Items</h2>
@@ -78,9 +78,3 @@
 </tbody>
 </table>
 </section>
-
-<br />
-<div class="clearfix">
-<a href="/">Home</a> | 
-<a href="/events">Events</a>
-</div>

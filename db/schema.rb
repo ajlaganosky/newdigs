@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130211192358) do
+ActiveRecord::Schema.define(:version => 20130213205023) do
 
   create_table "agents", :force => true do |t|
     t.string   "email",                                 :null => false
@@ -58,6 +58,7 @@ ActiveRecord::Schema.define(:version => 20130211192358) do
     t.datetime "updated_at", :null => false
     t.string   "user_id"
     t.string   "county"
+    t.string   "lastname"
   end
 
   create_table "donors", :force => true do |t|
@@ -177,15 +178,21 @@ ActiveRecord::Schema.define(:version => 20130211192358) do
 
   create_table "wish_list_items", :force => true do |t|
     t.integer  "product_id"
-    t.datetime "created_at", :null => false
-    t.datetime "updated_at", :null => false
+    t.datetime "created_at",  :null => false
+    t.datetime "updated_at",  :null => false
+    t.integer  "wishlist_id"
   end
 
   add_index "wish_list_items", ["product_id"], :name => "index_wish_list_items_on_product_id"
+  add_index "wish_list_items", ["wishlist_id"], :name => "index_wish_list_items_on_wishlist_id"
 
   create_table "wishlists", :force => true do |t|
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
+    t.integer  "client_id"
+    t.integer  "product_id"
   end
+
+  add_index "wishlists", ["id"], :name => "index_wishlists_on_id"
 
 end

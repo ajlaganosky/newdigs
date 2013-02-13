@@ -1,8 +1,7 @@
 <p id="notice"><%= notice %></p>
 
-  <article class="productlist">
     <strong>Name</strong>
-    <p><%= @client.name %></p>
+    <p><%= @client.name %><% if @client.lastname? %> <%= @client.lastname %><% end %></p>
 
 	<% if @client.address != "" %>
     <strong>Address</strong>
@@ -45,15 +44,25 @@
 	    <p><%= @client.notes %></p>
     <% end %>
 
-  <div class="clearfix individualcontrols">
-    <%= link_to 'Back', clients_path %><% if can? :update, @clients %>
-    <%= link_to 'Edit', edit_client_path(@client) %><% end %><% if can? :destroy, @clients %>    <%= link_to 'Destroy', @client, method: :delete, data: { confirm: 'Are you sure?' } %><% end %>
-<% if can? :create, @events %> <br />
-    <a href="/events/new_with_client/<%= @client.id %>">New appointment for <%= @client.name %></a><% end %>
-    <br />
+    <%= link_to 'Back', clients_path, :class => "btn btn-inverse" %><% if can? :update, @clients %>
+    <%= link_to 'Edit', edit_client_path(@client), :class => "btn btn-warning" %><% end %>
+    <% if can? :destroy, @clients %><%= link_to 'Destroy', @client, :class => "btn btn-danger", method: :delete, data: { confirm: 'Are you sure?' } %><% end %>
+<% if can? :create, @events %> 
+    <a href="/events/new_with_client/<%= @client.id %>" class="btn btn-success">New appointment for <%= @client.name %></a><% end %>
+    
 <% if can? :create, @pickup_lists %>
-    <a href="/pickup_lists/new/<%= @client.id %>">New List for <%= @client.name %></a><br />
-    <a href="/pickup_lists/<%#= @pickuplist.last.id %>">Existing List for <%= @client.name %></a>
+    <% if @pickuplist.count == 0 %>
+    <a href="/pickup_lists/new/<%= @client.id %>" class="btn btn-success">New List for <%= @client.name %></a>
+    <% end %>
+    <% if @pickuplist.exists? %>
+    <a href="/pickup_lists/<%= @pickuplist.last.id %>" class="btn btn-primary">Existing List for <%= @client.name %></a>
+    <% end %>
 <% end %>
-  </div>
-  </article>
+<% if can? :create, @wishlists %>
+    <%# if @wishlist.count == 0 %>
+    <a href="/wishlists/new/<%= @client.id %>" class="btn btn-success">New WishList for <%= @client.name %></a>
+    <%# end %>
+    <%# if @wishlist.exists? %>
+    <a href="/wishlists/<%#= @wishlist.last.id %>" class="btn btn-primary">Existing WishList for <%= @client.name %></a>
+    <%# end %>
+<% end %>

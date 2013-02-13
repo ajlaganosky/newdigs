@@ -1,7 +1,7 @@
 <%= form_for(@wishlist) do |f| %>
   <% if @wishlist.errors.any? %>
     <div id="error_explanation">
-      <h2><%= pluralize(@wishlist.errors.count, "error") %> prohibited this Pickup List from being saved:</h2>
+      <h2><%= pluralize(@wishlist.errors.count, "error") %> prohibited this WishList from being saved:</h2>
 
       <ul>
       <% @wishlist.errors.full_messages.each do |msg| %>
@@ -19,8 +19,7 @@
   		<li class="checklist">
   		<% 
   		inlist = false
-  		if PickupListProduct.where(:product_id => c.id).where(:wishlist_id => @wishlist.id).count > 0
-  			inlist = true
+  		if WishListItem.where(:product_id => c.id).where(:wishlist => true)
   		end
   		%>
 	  <%= check_box_tag "product_id[]", c.id, inlist %>

@@ -36,7 +36,7 @@ class WishlistsController < ApplicationController
   	@client = Client.find(params[:client_id])
     @wishlist = Wishlist.new
     @wishlist.client_id = @client.id
-    @product = Product.where(:inventory => true).find(:all, :order => 'category_id')
+    @product = Product.where(:wishlist => true).find(:all, :order => 'category_id')
     @category = Category.all    
   end
   

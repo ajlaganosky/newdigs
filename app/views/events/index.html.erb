@@ -1,5 +1,5 @@
 <h1>Calendar of Events</h1>
-<% if can? :create, @events %><p><%= link_to "New Entry", new_event_path %></p><% end %>
+<% if can? :create, @events %><p><%= link_to "New Entry", new_event_path, :class => 'btn btn-success' %></p><% end %>
 
 <div id="events">
   <h2 id="month">

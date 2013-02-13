@@ -3,9 +3,19 @@
 	<h1>Pickup List for <%= @pickup_list.client.name %></h1>
 	<h3>Items</h3>
 	<h4>Click an item to remove it.</h4>
+<table class="table table-bordered table-condensed table-striped table-hover">
+<thead>
+<tr>
+<th>Name</th>
+</tr>
+</thead>
+<tbody>
 	<% @pickup_list.products.each do |product| %>
-		<a href="/picked_up/<%= @pickup_list.id %>/<%= product.id %>"><%= product.name %></a><br />
-	<% end %>
-	<br />
+	<tr>
+		<td><a href="/picked_up/<%= @pickup_list.id %>/<%= product.id %>"><%= product.name %></a></td>
+	</tr>
+<% end %>
+</tbody>
+</table>
 <%= link_to 'Edit', edit_pickup_list_path(@pickup_list), :class => "btn btn-warning" %>	
 <%= link_to 'Back', client_path(@client), :class => "btn btn-inverse" %>
