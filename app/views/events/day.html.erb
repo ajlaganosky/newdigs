@@ -13,7 +13,7 @@
 				<% @events.each do |event| %>
 					<tr>
 						<% if event.start_time? %><td><%= event.start_time.to_s.strftime("%l:%M %p") %></td><% else %><td>N/A</td><% end %>
-						<% if event.end_time? %><td><%= event.end_time.strftime("%l:%M %p") %></td><% else %><td>N/A</td><% end %>
+						<% if event.end_time? %><td><%= event.end_time.to_s.strftime("%l:%M %p") %></td><% else %><td>N/A</td><% end %>
 						<td><strong><%= link_to event.name, event %></strong></td>
 					</tr>
 				<% end %>
