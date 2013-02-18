@@ -2,6 +2,7 @@ class EventsController < ApplicationController
     before_filter :authenticate_user!
   load_and_authorize_resource
   def index
+
     @events = Event.all
     @events_by_date = @events.group_by(&:published_on)
     @expiration_date = @events.group_by(&:expiration_date)
