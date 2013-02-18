@@ -16,7 +16,7 @@
   </div>
   <div class="field">
   	<%= f.label "Type of Event" %><br />
-  	<%= f.select :filter, ["Appointment", "Volunteer", "Pick Up"] %>
+  	<%= select :event, :filter, ["Appointment", "Volunteer", "Pick Up"] %>
   </div>
   <div class="field">
     <%= f.label "Created Date" %><br />

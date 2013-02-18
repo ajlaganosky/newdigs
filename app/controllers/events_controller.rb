@@ -65,7 +65,7 @@ def create
     @dates = Date.parse(params[:date])
     @date = Date.parse(params[:date]).strftime("%m%d%Y")
     @datedb = @dates.strftime("%Y-%m-%d")
-  	@events = Event.where(:expiration_date => @datedb)
+  	@events = Event.where(:expiration_date => @datedb).order(:start_time)
   end
   
 end

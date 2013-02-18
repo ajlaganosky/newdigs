@@ -11,8 +11,13 @@
 			</thead>
 			<tbody>
 				<% @events.each do |event| %>
-					<tr>
-						<% if event.start_time? %><td><%= event.start_time.strftime("%l:%M %p") %></td><% else %><td>N/A</td><% end %>
+					<tr <% if event.filter == "Volunteer" %> class="success"
+							<% elsif event.filter == "Appointment" %> class="warning"
+							<% elsif event.filter == "Pick up" %> class="info"
+						<% end %>
+						>
+						<% if event.start_time? %>
+							<td><%= event.start_time.strftime("%l:%M %p") %></td><% else %><td>N/A</td><% end %>
 						<% if event.end_time? %><td><%= event.end_time.strftime("%l:%M %p") %></td><% else %><td>N/A</td><% end %>
 						<td><strong><%= link_to event.name, event %></strong></td>
 					</tr>
