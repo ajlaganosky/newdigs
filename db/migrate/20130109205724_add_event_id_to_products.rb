@@ -1,5 +1,5 @@
 class AddEventIdToProducts < ActiveRecord::Migration
   def change
-    add_column :products, :event_id, :string
+    add_column :products, :event_id, :integer
   end
 end
