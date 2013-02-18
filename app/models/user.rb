@@ -12,6 +12,8 @@ class User < ActiveRecord::Base
   before_create :set_default_role
   has_many :clients
 
+  validates :name, :presence => true
+
    private
   def set_default_role
     self.role ||= Role.find_by_name('registered')
