@@ -52,7 +52,15 @@ class ProductsController < ApplicationController
   # POST /products.json
   def create
     @product = Product.new(params[:product])
-    @category = Category.all
+    @category = @product.category
+    
+    if category.wishlist?
+    	@product.status = "0"
+    	@product.status_date = Date.now
+    	
+    	#we are a wish list item... check to see if anybody is looking for us.
+    	#maybe we ignore this step here and leave it to daily processing.
+    end
 
     respond_to do |format|
       if @product.save
