@@ -38,7 +38,7 @@ class WishlistsController < ApplicationController
     @wishlist.client_id = @client.id
 
     @category = Category.where(:wishlist => true)
-    @product = Product.where(:category_id => @category).find(:all, :order => 'category_id')
+    @product = Product.where(:category_id => @category.id).order(:category_id)
   end
   
   # GET /wishlists/new
@@ -49,7 +49,7 @@ class WishlistsController < ApplicationController
     @wishlist.client_id = @client.id
 
     @category = Category.where(:wishlist => true)
-    @product = Product.where(:category_id => @category).find(:all, :order => 'category_id')
+    @product = Product.where(:category_id => @category.id).order(:category_id)
   end
 
   # GET /wishlists/1/edit
@@ -58,7 +58,7 @@ class WishlistsController < ApplicationController
     @client = @wishlist.client
 
     @category = Category.where(:wishlist => true)
-    @product = Product.where(:category_id => @category).find(:all, :order => 'category_id')
+    @product = Product.where(:category_id => @category.id).order(:category_id)
        
   end
 
