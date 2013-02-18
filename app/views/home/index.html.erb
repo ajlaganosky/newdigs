@@ -1,6 +1,6 @@
 <h1>New Digs Inventory Management Login</h1>
 
-  <section>
+
     <% if user_signed_in? %>
 
         Signed in as <%= current_user.name %>.<br />Welcome.<br />
@@ -8,7 +8,7 @@
     <% else %>
         <%= link_to 'Register', new_user_registration_path %> or <%= link_to 'Sign in', new_user_session_path %>
     <% end %>
-   </section>
+
     
     <% if user_signed_in? %>
  <!--    <section>
@@ -22,7 +22,7 @@
 	    </ul>
     </section -->
    
-    <section>
+
     	<h2>Events Happening Today</h2>
 <table class="table table-bordered table-condensed table-striped table-hover">
 <thead>
@@ -50,7 +50,7 @@
 			    <% end %>
 </tbody>
 </table>	    
-    </section>
+
     <%= link_to "Inventoried Items", products_path %>
 
 	<% end %>
