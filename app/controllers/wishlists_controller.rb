@@ -37,8 +37,7 @@ class WishlistsController < ApplicationController
     @wishlist = Wishlist.new
     @wishlist.client_id = @client.id
 
-    @category = Category.where(:wishlist => true).first
-    @product = Product.where(:category_id => @category.id).order(:category_id)
+    @category = Category.where(:wishlist => true)
   end
   
   # GET /wishlists/new

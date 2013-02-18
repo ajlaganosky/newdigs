@@ -15,17 +15,18 @@
 
   <div class="field">
   <ul>
-  	<% @product.each do |c| %>
-  		<li class="checklist">
-  		<% 
-  		inlist = false
-  		if WishListItem.where(:product_id => c.id).where(:wishlist => true)
-  		end
-  		%>
-	  <%= check_box_tag "product_id[]", c.id, inlist %>
-	  <%= h c.name %>
-	    </li>
-	<% end %>
+  	<% @category.each do |c| %>
+  		<% Product.where(:category_id => c.id).order(:category_id).each do |product| %>
+	  		<li class="checklist">
+	  		<% 
+	  		inlist = false
+	  		if WishListItem.where(:product_id => product.id).where(:wishlist => true)
+	  			inlist = true
+	  		end
+	  		%>
+	  		<%= check_box_tag "product_id[]", product.id, inlist %> <%= h product.name %></li>
+  		<% end %>
+	  <% end %>
   </ul>
   </div>
 
