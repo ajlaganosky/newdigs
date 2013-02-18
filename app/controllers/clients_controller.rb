@@ -22,7 +22,7 @@ class ClientsController < ApplicationController
     @client = Client.find(params[:id])
     @user = User.all
     @pickuplist = PickupList.where("client_id = ?", @client)
-    #@wishlist = WishList.where("client_id = ?", @client)
+    @wishlist = Wishlist.where("client_id = ?", @client)
     
     respond_to do |format|
       format.html # show.html.erb

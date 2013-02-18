@@ -22,7 +22,7 @@
 <tr>
 <td><%= product.name %></td>
 <td><% if product.inventory == false %>No<% else %>Yes<% end %></td>
-<td><% if !product.category_id == "" %>
+<td><% if product.category_id != "" %>
 		<%= product.category.name %>
 	<% end %>
 </td>
@@ -47,7 +47,6 @@
 <tr>
 <th>Name</th>
 <th>Inventoried?</th>
-<th>Category</th>
 <th>Accepted?</th>
 <th>Reason</th>
 <th></th>
@@ -60,10 +59,6 @@
 <tr>
 <td><%= product2.name %></td>
 <td><% if product2.inventory == false %>No<% else %>Yes<% end %></td>
-<td><% if !product2.category_id == "" %>
-		<%= product2.category.name %>
-	<% end %>
-</td>
 <td><% if product2.accepted == false %>No<% else %>Yes<% end %></td>
 <td><% if product2.accepted == false %><%= truncate(product2.reason, :length => 30 ) %><% end %></td>
 <td><%= link_to 'Show', product2, :class => 'btn btn-info' %></td>
