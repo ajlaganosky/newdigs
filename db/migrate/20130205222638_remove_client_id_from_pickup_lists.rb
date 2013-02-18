@@ -4,6 +4,6 @@ class RemoveClientIdFromPickupLists < ActiveRecord::Migration
   end
 
   def down
-    add_column :pickup_lists, :client_id, :string
+    add_column :pickup_lists, :client_id, :integer
   end
 end

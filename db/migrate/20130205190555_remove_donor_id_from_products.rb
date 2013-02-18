@@ -4,6 +4,6 @@ class RemoveDonorIdFromProducts < ActiveRecord::Migration
   end
 
   def down
-    add_column :products, :donor_id, :string
+    add_column :products, :donor_id, :integer
   end
 end
