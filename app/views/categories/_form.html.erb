@@ -17,6 +17,21 @@
   </div>
   
   <div class="field">
+    <%= f.label "Value - A" %><br />
+    <%= f.text_field :price_a %>
+  </div>
+  
+  <div class="field">
+    <%= f.label "Value - B" %><br />
+    <%= f.text_field :price_b %>
+  </div>
+  
+  <div class="field">
+    <%= f.label "Value - C" %><br />
+    <%= f.text_field :price_c %>
+  </div>
+  
+  <div class="field">
     <%= f.label :wishlist %><br />
 	<%= f.label "Yes" %><%= f.radio_button :wishlist, true %><br />
 	<%= f.label "No" %><%= f.radio_button :wishlist, false %>
