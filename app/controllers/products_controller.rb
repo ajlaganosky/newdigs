@@ -54,9 +54,9 @@ class ProductsController < ApplicationController
     @product = Product.new(params[:product])
     @category = @product.category
     
-    if category.wishlist?
+    if @product.category.wishlist?
     	@product.status = "0"
-    	@product.status_date = Date.now
+    	@product.status_date = Time.now
     	
     	#we are a wish list item... check to see if anybody is looking for us.
     	#maybe we ignore this step here and leave it to daily processing.
