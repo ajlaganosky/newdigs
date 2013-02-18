@@ -59,10 +59,10 @@
     <% end %>
 <% end %>
 <% if can? :create, @wishlists %>
-    <%# if @wishlist.count == 0 %>
+    <% if @wishlist.count == 0 %>
     <a href="/wishlists/new/<%= @client.id %>" class="btn btn-success">New WishList for <%= @client.name %></a>
-    <%# end %>
-    <%# if @wishlist.exists? %>
-    <a href="/wishlists/<%#= @wishlist.last.id %>" class="btn btn-primary">Existing WishList for <%= @client.name %></a>
-    <%# end %>
+    <% end %>
+    <% if @wishlist.exists? %>
+    <a href="/wishlists/<%= @wishlist.last.id %>" class="btn btn-primary">Existing WishList for <%= @client.name %></a>
+    <% end %>
 <% end %>

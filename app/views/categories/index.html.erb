@@ -6,6 +6,7 @@
 <table class="table table-condensed table-striped table-bordered table-hover">
   <tr>
     <th>Name</th>
+    <th>Wishlist?</th>
     <th></th>
     <th></th>
   </tr>
@@ -13,8 +14,10 @@
 <% @categories.each do |category| %>
   <tr>
     <td><%= category.name %></td>
+    <td><% if category.wishlist == false %>No<% elsif category.wishlist == true %>Yes<% else %>Not Selected<% end %></td>
     <td><%= link_to 'Edit', edit_category_path(category), :class => "btn btn-warning" %></td>
     <td><%= link_to 'Destroy', category, method: :delete, data: { confirm: 'Are you sure?' }, :class => "btn btn-danger" %></td>
   </tr>
 <% end %>
+
 </table>

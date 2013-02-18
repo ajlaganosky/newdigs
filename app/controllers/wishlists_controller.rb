@@ -36,8 +36,9 @@ class WishlistsController < ApplicationController
   	@client = Client.find(params[:client_id])
     @wishlist = Wishlist.new
     @wishlist.client_id = @client.id
-    @product = Product.where(:wishlist => true).find(:all, :order => 'category_id')
-    @category = Category.all    
+
+    @category = Category.where(:wishlist => true)
+    @product = Product.where(:category_id => @category).find(:all, :order => 'category_id')
   end
   
   # GET /wishlists/new
@@ -46,16 +47,18 @@ class WishlistsController < ApplicationController
     @wishlist = Wishlist.new
   	@client = Client.find(params[:client_id])
     @wishlist.client_id = @client.id
-    @product = Product.where(:inventory => true).where(:wishlist => false).find(:all, :order => 'category_id')    
-    @category = Category.all    
+
+    @category = Category.where(:wishlist => true)
+    @product = Product.where(:category_id => @category).find(:all, :order => 'category_id')
   end
 
   # GET /wishlists/1/edit
   def edit
     @wishlist = Wishlist.find(params[:id])
     @client = @wishlist.client
-    @product = Product.where(:inventory => true).find(:all, :order => 'category_id')    
-    @category = Category.all 
+
+    @category = Category.where(:wishlist => true)
+    @product = Product.where(:category_id => @category).find(:all, :order => 'category_id')
        
   end
 
@@ -69,7 +72,7 @@ class WishlistsController < ApplicationController
   			@wishlist.products << Product.find(product)
         	
     	end
-    	redirect_to :action => "show", :id => @wishlist.client.id
+    	redirect_to :action => "show", :id => @wishlist#.client.id
     else
     	render action: "new"
     end
