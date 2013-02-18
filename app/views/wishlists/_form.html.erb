@@ -20,7 +20,7 @@
 	  		<li class="checklist">
 	  		<% 
 	  		inlist = false
-	  		if WishListItem.where(:product_id => product.id).where(:wishlist => true)
+	  		if WishListItem.where(:product_id => product.id).where(:wishlist_id => @wishlist.id).count > 0
 	  			inlist = true
 	  		end
 	  		%>
