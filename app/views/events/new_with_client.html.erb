@@ -49,6 +49,12 @@
     <%= f.label :product %><br />
     <%= f.collection_select(:product_id, Product.all, :id, :name, {:include_blank => 'Please select a Product'}) %>
   </div>
+  <hr />
+    <div class="field">
+  	<%= f.label "Status of Event" %><br />
+  	<%= f.select :result, ["Occurred", "No Show", "Walk In", "Rescheduled"] %>
+  </div>
+
   <div class="actions">
     <%= f.submit %>
   </div>
