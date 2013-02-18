@@ -1,4 +1,4 @@
-<h1>New event</h1>
+<h1>New Event</h1>
 
 <%= form_for @event do |f| %>
   <% if @event.errors.any? %>
@@ -16,6 +16,12 @@
     <%= f.label :name %><br />
     <%= f.text_field :name %>
   </div>
+
+  <div class="field">
+  	<%= f.label "Type of Event" %><br />
+  	<%= f.select :filter, ["Appointment", "Volunteer", "Pick Up"] %>
+  </div>
+
   <div class="field">
     <%= f.label "Created Date" %><br />
     <%= f.text_field :published_on %>

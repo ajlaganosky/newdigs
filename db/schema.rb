@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130218180605) do
+ActiveRecord::Schema.define(:version => 20130218193728) do
 
   create_table "agents", :force => true do |t|
     t.string   "email",                                 :null => false
@@ -71,8 +71,8 @@ ActiveRecord::Schema.define(:version => 20130218180605) do
     t.string   "email"
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
-    t.integer  "donor_id"
-    t.integer  "product_id"
+    t.string   "donor_id"
+    t.string   "product_id"
   end
 
   add_index "donors", ["id"], :name => "index_donors_on_id"
@@ -84,10 +84,11 @@ ActiveRecord::Schema.define(:version => 20130218180605) do
     t.date     "published_on"
     t.text     "content"
     t.date     "expiration_date"
-    t.integer  "product_id"
-    t.integer  "client_id"
+    t.string   "product_id"
+    t.string   "client_id"
     t.datetime "start_time"
     t.datetime "end_time"
+    t.string   "filter"
   end
 
   add_index "events", ["id"], :name => "index_events_on_id"
@@ -106,8 +107,8 @@ ActiveRecord::Schema.define(:version => 20130218180605) do
   end
 
   create_table "picked_ups", :force => true do |t|
-    t.integer  "product_id"
-    t.integer  "pickup_list_id"
+    t.string   "product_id"
+    t.string   "pickup_list_id"
     t.datetime "created_at",     :null => false
     t.datetime "updated_at",     :null => false
   end
@@ -125,7 +126,7 @@ ActiveRecord::Schema.define(:version => 20130218180605) do
   create_table "pickup_lists", :force => true do |t|
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
-    t.integer  "product_id"
+    t.string   "product_id"
     t.integer  "client_id"
   end
 
@@ -143,9 +144,9 @@ ActiveRecord::Schema.define(:version => 20130218180605) do
     t.boolean  "accepted"
     t.boolean  "declined"
     t.text     "reason"
-    t.integer  "event_id"
-    t.integer  "category_id"
-    t.integer  "pickup_list_id"
+    t.string   "event_id"
+    t.string   "category_id"
+    t.string   "pickup_list_id"
     t.integer  "donor_id"
     t.boolean  "wishlist"
     t.string   "quality"

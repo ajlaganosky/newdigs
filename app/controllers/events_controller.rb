@@ -2,8 +2,7 @@ class EventsController < ApplicationController
     before_filter :authenticate_user!
   load_and_authorize_resource
   def index
-
-    @events = Event.all
+  	@events = Event.all
     @events_by_date = @events.group_by(&:published_on)
     @expiration_date = @events.group_by(&:expiration_date)
     @date = params[:date] ? Date.parse(params[:date]) : Date.today
@@ -51,7 +50,15 @@ def create
   end
   
   def filter
-  	@event = Event.where(:status => params[:status])
+	if params[:filter].present?
+		@events = Event.where(:filter => params[:filter])
+	else
+    	@events = Event.all
+    end
+    @events_by_date = @events.group_by(&:published_on)
+    @expiration_date = @events.group_by(&:expiration_date)
+    @date = params[:date] ? Date.parse(params[:date]) : Date.today
+
   end
   
   def day
