@@ -83,8 +83,7 @@ ActiveRecord::Schema.define(:version => 20130213205023) do
     t.date     "expiration_date"
     t.string   "product_id"
     t.string   "client_id"
-    t.datetime "start_time"
-    t.datetime "end_time"
+    t.string   "start_time"
   end
 
   add_index "events", ["id"], :name => "index_events_on_id"
@@ -177,13 +176,14 @@ ActiveRecord::Schema.define(:version => 20130213205023) do
   add_index "users", ["reset_password_token"], :name => "index_users_on_reset_password_token", :unique => true
 
   create_table "wish_list_items", :force => true do |t|
-    t.integer  "product_id"
+    t.string   "category_id"
+    t.string   "product_id"
+    t.boolean  "available"
     t.datetime "created_at",  :null => false
     t.datetime "updated_at",  :null => false
     t.integer  "wishlist_id"
   end
 
-  add_index "wish_list_items", ["product_id"], :name => "index_wish_list_items_on_product_id"
   add_index "wish_list_items", ["wishlist_id"], :name => "index_wish_list_items_on_wishlist_id"
 
   create_table "wishlists", :force => true do |t|

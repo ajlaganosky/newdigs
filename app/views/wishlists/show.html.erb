@@ -1,6 +1,6 @@
 <p id="notice"><%= notice %></p>
 
-	<h1>Pickup List for <%= @wishlist.client.name %></h1>
+	<h1>Wishlist for <%= @wishlist.client.name %></h1>
 	<h3>Items</h3>
 	<h4>Click an item to remove it.</h4>
 <table class="table table-bordered table-condensed table-striped table-hover">
@@ -17,5 +17,5 @@
 <% end %>
 </tbody>
 </table>
-<%= link_to 'Edit', edit_wishlist_path(@wishlist) %>	
-<%= link_to 'Back', client_path(@client) %>
+<%= link_to 'Edit', edit_wishlist_path(@wishlist), :class => "btn btn-warning" %>	
+<%= link_to 'Back', client_path(@client), :class => "btn btn-inverse" %>
