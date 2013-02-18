@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130218154638) do
+ActiveRecord::Schema.define(:version => 20130218180605) do
 
   create_table "agents", :force => true do |t|
     t.string   "email",                                 :null => false
@@ -86,7 +86,8 @@ ActiveRecord::Schema.define(:version => 20130218154638) do
     t.date     "expiration_date"
     t.string   "product_id"
     t.string   "client_id"
-    t.string   "start_time"
+    t.datetime "start_time"
+    t.datetime "end_time"
   end
 
   add_index "events", ["id"], :name => "index_events_on_id"
@@ -147,7 +148,9 @@ ActiveRecord::Schema.define(:version => 20130218154638) do
     t.string   "pickup_list_id"
     t.integer  "donor_id"
     t.boolean  "wishlist"
-    t.string   "Quality"
+    t.string   "quality"
+    t.integer  "status"
+    t.datetime "status_date"
   end
 
   add_index "products", ["id"], :name => "index_products_on_id"
