@@ -8,8 +8,8 @@
     <strong>Location</strong>
     <p><%= @product.location %></p>
     <% end %>
-    <strong>Price</strong>
-    <p><%= number_to_currency(@product.price, :unit => "$") %></p>
+    <strong>Quality</strong>
+    <p>Quality <%= @product.quality.capitalize %></p>
     <strong>Inventoried?</strong>
     <p><% if @product.inventory == false %>No<% else %>Yes<% end %></p>
 	<% if @product.donor_id? %>
@@ -26,8 +26,6 @@
     <p><%# if @product.delivery == false %>No<%# else %>Yes<%# end %></p>
     <strong>Picked Up?</strong>
     <p><%# if @product.pickup == false %>No<%# else %>Yes<%# end %></p> -->
-    <strong>Wishlist Item?</strong>
-    <p><% if @product.wishlist == false %>No<% else %>Yes<% end %></p>
     <strong>Accepted?</strong>
     <p><% if @product.accepted == false %>No<% else %>Yes<% end %></p>
     <% if @product.accepted == false %>

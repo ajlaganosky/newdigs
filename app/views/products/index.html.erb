@@ -1,15 +1,14 @@
-<h1>Listing Inventory</h1>
+<h1>Inventory</h1>
 	    <% if can? :create, @products %> 
-			<%= link_to 'New Product', new_product_path, :class => 'btn btn-success' %>
+			<%= link_to 'Add Product To Inventory', new_product_path, :class => 'btn btn-success' %>
 		<% end %>	
 <section>
-<h2>Inventoried Items</h2>
+<br/>
 <table class="table table-bordered table-condensed table-striped table-hover">
 <thead>
 <tr>
 <th>Name</th>
 <th>Inventoried?</th>
-<th>Category</th>
 <th>Accepted?</th>
 <th>Reason</th>
 <th></th>
@@ -20,12 +19,8 @@
 <tbody>
 <% @products.each do |product|%>
 <tr>
-<td><%= product.name %></td>
+<td>(<%= product.category.name %>) <%= product.name %></td>
 <td><% if product.inventory == false %>No<% else %>Yes<% end %></td>
-<td><% if !product.category_id == "" %>
-		<%= product.category.name %>
-	<% end %>
-</td>
 <td><% if product.accepted == false %>No<% else %>Yes<% end %></td>
 <td><% if product.accepted == false %><%= truncate(product.reason, :length => 30 ) %><% end %></td>
 <td><%= link_to 'Show', product, :class => 'btn btn-info' %></td>
@@ -47,7 +42,6 @@
 <tr>
 <th>Name</th>
 <th>Inventoried?</th>
-<th>Category</th>
 <th>Accepted?</th>
 <th>Reason</th>
 <th></th>
@@ -58,12 +52,8 @@
 <tbody>
 <% @products2.each do |product2|%>
 <tr>
-<td><%= product2.name %></td>
+<td>(<%= product2.category.name %>) <%= product2.name %></td>
 <td><% if product2.inventory == false %>No<% else %>Yes<% end %></td>
-<td><% if !product2.category_id == "" %>
-		<%= product2.category.name %>
-	<% end %>
-</td>
 <td><% if product2.accepted == false %>No<% else %>Yes<% end %></td>
 <td><% if product2.accepted == false %><%= truncate(product2.reason, :length => 30 ) %><% end %></td>
 <td><%= link_to 'Show', product2, :class => 'btn btn-info' %></td>

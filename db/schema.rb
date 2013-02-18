@@ -11,11 +11,11 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130218144328) do
+ActiveRecord::Schema.define(:version => 20130218154638) do
 
   create_table "agents", :force => true do |t|
-    t.string   "email",                  :default => "", :null => false
-    t.string   "encrypted_password",     :default => "", :null => false
+    t.string   "email",                                 :null => false
+    t.string   "encrypted_password",                    :null => false
     t.string   "reset_password_token"
     t.datetime "reset_password_sent_at"
     t.datetime "remember_created_at"
@@ -24,12 +24,17 @@ ActiveRecord::Schema.define(:version => 20130218144328) do
     t.datetime "last_sign_in_at"
     t.string   "current_sign_in_ip"
     t.string   "last_sign_in_ip"
-    t.datetime "created_at",                             :null => false
-    t.datetime "updated_at",                             :null => false
+    t.datetime "created_at",                            :null => false
+    t.datetime "updated_at",                            :null => false
   end
 
   add_index "agents", ["email"], :name => "index_agents_on_email", :unique => true
   add_index "agents", ["reset_password_token"], :name => "index_agents_on_reset_password_token", :unique => true
+
+  create_table "appointments", :force => true do |t|
+    t.string "date"
+    t.string "hour"
+  end
 
   create_table "categories", :force => true do |t|
     t.string   "name"
@@ -133,7 +138,6 @@ ActiveRecord::Schema.define(:version => 20130218144328) do
     t.string   "location"
     t.float    "price"
     t.boolean  "inventory"
-    t.string   "donor"
     t.boolean  "delivery"
     t.boolean  "pickup"
     t.boolean  "accepted"
@@ -144,6 +148,7 @@ ActiveRecord::Schema.define(:version => 20130218144328) do
     t.string   "pickup_list_id"
     t.integer  "donor_id"
     t.boolean  "wishlist"
+    t.string   "Quality"
   end
 
   add_index "products", ["id"], :name => "index_products_on_id"
@@ -156,8 +161,8 @@ ActiveRecord::Schema.define(:version => 20130218144328) do
   end
 
   create_table "users", :force => true do |t|
-    t.string   "email",                  :default => "", :null => false
-    t.string   "encrypted_password",     :default => "", :null => false
+    t.string   "email",                                 :null => false
+    t.string   "encrypted_password",                    :null => false
     t.string   "reset_password_token"
     t.datetime "reset_password_sent_at"
     t.datetime "remember_created_at"
@@ -166,8 +171,8 @@ ActiveRecord::Schema.define(:version => 20130218144328) do
     t.datetime "last_sign_in_at"
     t.string   "current_sign_in_ip"
     t.string   "last_sign_in_ip"
-    t.datetime "created_at",                             :null => false
-    t.datetime "updated_at",                             :null => false
+    t.datetime "created_at",                            :null => false
+    t.datetime "updated_at",                            :null => false
     t.integer  "role_id"
     t.string   "name"
   end
@@ -176,14 +181,13 @@ ActiveRecord::Schema.define(:version => 20130218144328) do
   add_index "users", ["reset_password_token"], :name => "index_users_on_reset_password_token", :unique => true
 
   create_table "wish_list_items", :force => true do |t|
-    t.string   "category_id"
-    t.string   "product_id"
-    t.boolean  "available"
+    t.integer  "product_id"
     t.datetime "created_at",  :null => false
     t.datetime "updated_at",  :null => false
     t.integer  "wishlist_id"
   end
 
+  add_index "wish_list_items", ["product_id"], :name => "index_wish_list_items_on_product_id"
   add_index "wish_list_items", ["wishlist_id"], :name => "index_wish_list_items_on_wishlist_id"
 
   create_table "wishlists", :force => true do |t|

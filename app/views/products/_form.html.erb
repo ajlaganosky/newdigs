@@ -10,12 +10,7 @@
       </ul>
     </div>
   <% end %>
-
-	  <div class="field">
-	    <%= f.label :donor %><br />
-	    <%= f.collection_select(:donor_id, Donor.all, :id, :name, {:include_blank => 'Please select a Donor'}) %>
-	  </div>
-
+  
   <div class="field">
     <%= f.label :name %><br />
     <%= f.text_field :name %>
@@ -25,27 +20,30 @@
     <%= f.label :location %><br />
     <%= f.text_field :location %>
   </div>
-
+  
+  <hr/>
+  
   <div class="field">
-    <%= f.label :price %><br />
-    $ <%= f.text_field :price %>
+  	<%= f.label :category %><br />
+  	<%= f.collection_select(:category_id, Category.all, :id, :name, {:include_blank => 'Please select a Category'}) %>
   </div>
 
   <div class="field">
-    <%= f.label :inventory %><br />
+    <%= f.label "Item Quality" %><br />
+    <%= select(:product, :quality, [['Quality A', 'a'], ['Quality B', 'b'], ['Quality C', 'c']]) %>
+  </div>
+  
+  <div class="field">
+    <%= f.label :donor %><br />
+    <%= f.collection_select(:donor_id, Donor.all, :id, :name, {:include_blank => 'Please select a Donor'}) %>
+  </div>
+  
+  <hr/>
+
+  <div class="field">
+    <%= f.label "Is this item Inventoried?" %><br />
 	<%= f.label "Yes" %><%= f.radio_button :inventory, true %><br />
 	<%= f.label "No" %><%= f.radio_button :inventory, false %>
-  </div>
-    
-  <div class="field">
-    <%= f.label :category %><br />
-    <%= f.collection_select(:category_id, Category.all, :id, :name, {:include_blank => 'Please select a Category'}) %>
-  </div>
-
-  <div class="field">
-    <%= f.label :wishlist %><br />
-	<%= f.label "Yes" %><%= f.radio_button :wishlist, true %><br />
-	<%= f.label "No" %><%= f.radio_button :wishlist, false %>
   </div>
     
 
@@ -59,7 +57,7 @@
     <%= f.label "Reason (if declined)" %><br />
     <%= f.text_area :reason %>
   </div>
-
+  <br/>
   <div class="actions">
     <%= f.submit %>
   </div>
