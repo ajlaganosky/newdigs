@@ -1,4 +1,7 @@
-<h1><%= @event.name %></h1>
+<h1<% if @event.filter == "Volunteer" %> class="text-success"
+							<% elsif @event.filter == "Appointment" %> class="text-warning"
+							<% elsif @event.filter == "Pick Up" %> class="text-info"
+						<% end %>><%= @event.name %></h1>
 
 <p class="info">Published on: <%= @event.published_on.strftime("%B %e, %Y") %></p>
 
@@ -14,8 +17,8 @@
 <p>Ends at: <%= @event.end_time.strftime("%l:%M %p") %></p>
 <% end %>
 
-<% if !@event.product_id.blank? %>
-<p>Product: <%= @event.product.name %></p>
+<% if @event.filter? %>
+<p>Type of Event: <%= @event.filter %></p>
 <% end %>
 
 
