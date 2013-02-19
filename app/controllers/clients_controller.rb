@@ -6,9 +6,14 @@ class ClientsController < ApplicationController
   # GET /clients
   # GET /clients.json
   def index
-    @clients = Client.find(:all, :order => 'name asc')
+  if params[:search]
+    @clients = Client.search(params[:search]).page(params[:page]).order(:lastname)
+  else
+  	@clients = Client.page(params[:page]).order(:lastname)
+  end
     @users = User.all
 #    @pickup_lists = Pickup_list.all
+
 
     respond_to do |format|
       format.html # index.html.erb

@@ -10,6 +10,6 @@ class Product < ActiveRecord::Base
   accepts_nested_attributes_for :category
   has_many :wish_list_items
   has_many :wishlists, :through => :wish_list_items
-
+  paginates_per 10
   
 end

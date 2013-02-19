@@ -16,6 +16,8 @@ gem 'appointments'
 
 gem 'cancan'
 
+gem 'kaminari'
+
 # gem 'combined_time_select', '~> 1.0.0'
 
 # Gems used only for assets and not required

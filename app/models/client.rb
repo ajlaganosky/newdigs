@@ -6,4 +6,12 @@ class Client < ActiveRecord::Base
   accepts_nested_attributes_for :pickup_lists
   has_many :wishlists
   accepts_nested_attributes_for :wishlists
+  paginates_per 10
+    def self.search(search)
+    if search
+      where('lastname LIKE ?', "%#{search}%")
+    else
+    
+    end
+  end
 end

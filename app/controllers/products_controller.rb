@@ -5,10 +5,10 @@ class ProductsController < ApplicationController
   # GET /products
   # GET /products.json
   def index
-	@products = Product.where(:inventory => true).find(:all, :order => 'category_id')
+	@products = Product.where(:inventory => true).order(:category_id).page(params[:page])
     @donors = Donor.all
     @categories = Category.all
-    @products2 = Product.where(:inventory => false).find(:all, :order => 'category_id')
+    @products2 = Product.where(:inventory => false).order(:category_id)
 
     respond_to do |format|
       format.html # index.html.erb

@@ -5,7 +5,7 @@ class DonorsController < ApplicationController
   # GET /donors
   # GET /donors.json
   def index
-    @donors = Donor.all
+    @donors = Donor.page(params[:page]).order(:name)
     @products = Product.all
 
     respond_to do |format|

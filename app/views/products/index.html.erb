@@ -40,6 +40,7 @@
 		    <%= link_to 'Destroy', product, method: :delete, data: { confirm: 'Are you sure?' }, :class => 'btn btn-danger' %>
 		<% end %></td>
 </tr>
+<%= paginate @products %>
 <% end %>
 </tbody>
 </table>
