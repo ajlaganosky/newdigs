@@ -1,15 +1,16 @@
 <h1>Calendar of Events</h1>
 <% if can? :create, @events %><p><%= link_to "New Entry", new_event_path, :class => 'btn btn-success' %></p><% end %>    
-<div class="btn-group">
+	<div class="btn-group">
     <a class="btn btn-primary" href="#">Filter</a>
     <a class="btn btn-primary dropdown-toggle" data-toggle="dropdown" href="#"><span class="caret"></span></a>
     <ul class="dropdown-menu">
-    	<li><a href="/events/filter/Volunteer">Volunteers</a></li>
-    	<li><a href="/events/filter/Appointment">Appointments</a></li>
-    	<li class="divider"></li>
-    	<li><a href="/events/filter/Pick up">Pick Up</a></li>
+    <li><a href="/events/">All</a></li>
+    <li><a href="/events/filter/Volunteer">Volunteers</a></li>
+    <li><a href="/events/filter/Appointment">Appointments</a></li>
+    <li class="divider"></li>
+    <li><a href="/events/filter/Pick up">Pick Up</a></li>
     </ul>
-</div>
+    </div>
 
 <div id="events">
   <h2 id="month">

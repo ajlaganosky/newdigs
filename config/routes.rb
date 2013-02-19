@@ -1,5 +1,7 @@
 Inventory::Application.routes.draw do
 
+  match 'events/filter/:filter' => 'events#filter'
+
   resources :wishlists
 
   match 'wishlists/new/:client_id' => 'wishlists#new_with_client'
