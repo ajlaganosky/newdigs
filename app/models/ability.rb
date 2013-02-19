@@ -33,8 +33,7 @@ class Ability
 	    cannot [:read, :modify], Category if user.role_id == 3
 
     # ADMIN = 4
-	    can :manage, :all if user.role_id == 4
-	    can :read, :all if user.role_id == 4
+	    can [:manage, :read, :modify, :create] :all if user.role_id == 4
 	
 	#######################################################################################
 
