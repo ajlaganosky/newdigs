@@ -2,6 +2,7 @@
  <h2><%= @dates.to_formatted_s(:long) %></h2>
  <% if @events.exists? %>
 		<table class="table table-striped table-condensed">
+		<caption><span class="text-success">Volunteers</span> <span class="text-warning">Appointments</span> <span class="text-info">Pick Ups</span></caption>
 			<thead>
 				<tr>
 					<th>Start Time</th>

@@ -24,3 +24,4 @@
 </blockquote>
 <% if can? :update, @event %>  <%= link_to "Edit Entry", edit_event_path(@event), :class => "btn btn-warning" %> <% end %>
   <%= link_to "Back to Calendar", events_path, :class => "btn btn-inverse" %>
+  <a href="/events/day/<%= @event.expiration_date.strftime("%Y-%m-%e") %>" class="btn btn-inverse">Back to Day</a>
