@@ -16,6 +16,7 @@
 					<tr <% if event.filter == "Volunteer" %> class="success"
 							<% elsif event.filter == "Appointment" %> class="warning"
 							<% elsif event.filter == "Pick Up" %> class="info"
+							<% else %>
 						<% end %>
 						>
 						<% if event.start_time? %>
