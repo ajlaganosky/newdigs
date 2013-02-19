@@ -21,8 +21,8 @@
     <td><%= number_to_currency(category.price_a) %></td>
     <td><%= number_to_currency(category.price_b) %></td>
     <td><%= number_to_currency(category.price_c) %></td>
-    <td><%= link_to 'Edit', edit_category_path(category), :class => "btn btn-warning" %></td>
-    <td><%= link_to 'Destroy', category, method: :delete, data: { confirm: 'Are you sure?' }, :class => "btn btn-danger" %></td>
+    <td><%= link_to 'Edit', edit_category_path(category), :class => "btn btn-warning btn-block" %></td>
+    <td><%= link_to 'Destroy', category, method: :delete, data: { confirm: 'Are you sure?' }, :class => "btn btn-danger btn-block" %></td>
   </tr>
 <% end %>
 

@@ -36,9 +36,9 @@
 
 	    <td><%= client.adults %>/<%= client.children %></td>
 
-	    <td><%= link_to 'Show', client, :class => 'btn btn-info' %><% if can? :update, @clients %> </td>
-	    <td><%= link_to 'Edit', edit_client_path(client), :class => 'btn btn-warning' %><% end %><% if can? :destroy, @clients %> </td>
-	    <td><%= link_to 'Destroy', client, method: :delete, data: { confirm: 'Are you sure?' }, :class => 'btn btn-danger' %> <% end %></td>
+	    <td><%= link_to 'Show', client, :class => 'btn btn-info btn-block' %><% if can? :update, @clients %> </td>
+	    <td><%= link_to 'Edit', edit_client_path(client), :class => 'btn btn-warning btn-block' %><% end %><% if can? :destroy, @clients %> </td>
+	    <td><%= link_to 'Destroy', client, method: :delete, data: { confirm: 'Are you sure?' }, :class => 'btn btn-danger btn-block' %> <% end %></td>
 </tr>
 <%= paginate @clients %>
 <% end %>
