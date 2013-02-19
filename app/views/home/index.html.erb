@@ -28,7 +28,8 @@
 			<% end %>
 		</tbody>
 	</table>
-	<%= link_to "Inventoried Items", products_path %>
+	<caption>Color Codes: <span class="text-success">Volunteers</span> | <span class="text-warning">Appointments</span> | <span class="text-info">Pick Ups</span></caption><br/><br/>
+	<%= link_to "View Inventory Items", products_path %>
 <% else %>
 	<h3>Welcome To New Digs</h3>
 	<p>In order to proceed you'll need to <%= link_to 'Sign In', new_user_session_path %> to your existing account or <%= link_to 'Create', new_user_registration_path %> a new account.</p>
