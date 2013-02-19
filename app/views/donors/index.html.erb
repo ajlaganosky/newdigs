@@ -1,4 +1,4 @@
-<h1>Listing Donors</h1>
+<h2>Listing Donors</h2>
 
 <p class="clearfix">
 <% if can? :create, @donors %><%= link_to 'New Donor', new_donor_path, :class => 'btn btn-success' %><% end %>
@@ -18,7 +18,7 @@
 <tbody>
 <% @donors.each do |donor| %>
 <tr>
-    <td><%= donor.name %></td>
+    <td><%= link_to "#{donor.name}", donor %></td>
     <td><%= donor.address %></td>
     <td><%= number_to_phone(donor.phone, :area_code => true) %></td>
     <td><%= link_to 'Email', 'mailto: ' + donor.email %></td>

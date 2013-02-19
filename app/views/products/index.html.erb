@@ -1,4 +1,4 @@
-<h1>Inventory</h1>
+<h3>Inventory</h3>
 	    <% if can? :create, @products %> 
 			<%= link_to 'Add Product To Inventory', new_product_path, :class => 'btn btn-success' %>
 		<% end %>	
@@ -8,9 +8,9 @@
 <thead>
 <tr>
 <th>Name</th>
-<th>Inventoried?</th>
-<th>Accepted?</th>
-<th>Reason</th>
+<th>Quality/Value</th>
+<th>Location</th>
+<th>Notes</th>
 <th></th>
 <th></th>
 <th></th>
@@ -19,10 +19,19 @@
 <tbody>
 <% @products.each do |product|%>
 <tr>
-<td>(<%= product.category.name %>) <%= product.name %></td>
-<td><% if product.inventory == false %>No<% else %>Yes<% end %></td>
-<td><% if product.accepted == false %>No<% else %>Yes<% end %></td>
-<td><% if product.accepted == false %><%= truncate(product.reason, :length => 30 ) %><% end %></td>
+<td><%= link_to "(#{product.category.name}) #{product.name}", product %></td>
+<%
+	if product.quality == "a"
+		val = product.category.price_a
+	elsif product.quality == "b"
+		val = product.category.price_b
+	elsif product.quality == "c"
+		val = product.category.price_c
+	end
+%>
+<td><%= product.quality.capitalize %> - <%= number_to_currency(val) %></td>
+<td><%= product.location %></td>
+<td></td>
 <td><%= link_to 'Show', product, :class => 'btn btn-info' %></td>
 <td><% if can? :update, @products %> 
 		    <%= link_to 'Edit', edit_product_path(product), :class => 'btn btn-warning' %>
@@ -36,7 +45,7 @@
 </table>
 </section>
 <section>
-<h2>Non-Inventoried Items</h2>
+<h4>Non-Inventoried Items</h4>
 <table class="table table-bordered table-condensed table-striped table-hover">
 <thead>
 <tr>

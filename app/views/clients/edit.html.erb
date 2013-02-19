@@ -1,6 +1,6 @@
-<h1>Editing client</h1>
+	<h1>Editing <%= @client.name %> <%= @client.lastname %></h1>
+	<%= render 'form' %>
 
-<%= render 'form' %>
+	<%= link_to 'Show', @client %> |
+	<%= link_to 'Back', clients_path %>
 
-<%= link_to 'Show', @client %> |
-<%= link_to 'Back', clients_path %>

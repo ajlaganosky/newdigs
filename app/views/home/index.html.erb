@@ -1,56 +1,33 @@
-<h1>New Digs Inventory Management Login</h1>
-
-
-    <% if user_signed_in? %>
-
-        Signed in as <%= current_user.name %>.<br />Welcome.<br />
-        <%= link_to 'Sign out', destroy_user_session_path, :method => :delete %>
-    <% else %>
-        <%= link_to 'Register', new_user_registration_path %> or <%= link_to 'Sign in', new_user_session_path %>
-    <% end %>
-
-    
-    <% if user_signed_in? %>
- <!--    <section>
-    	<h2>All Products</h2>
-	    <ul>
-		    <%# @products.each do |product| %>
-			    <li>
-				    <%#= link_to product.name, product %>
-			    </li>
-		    <%# end %>
-	    </ul>
-    </section -->
-   
-
-    	<h2>Events Happening Today</h2>
-<table class="table table-bordered table-condensed table-striped table-hover">
-<thead>
-<tr>
-<th>Name</th>
-<th>Start Time</th>
-<th>End Time</th>
-</tr>
-</thead>
-<tbody>
-			    <% @events.each do |event| %>
-			    <tr>
-			    	<% if Date.today == event.expiration_date %>
-				    <td>
-					    <%= link_to event.name, event %>
-					</td>
-					<td>
-						<%= event.start_time.strftime("%l:%M %p") %>
-					</td>
-					<td>
-						<%= event.end_time.strftime("%l:%M %p") %>
-					</td>
-				    <% end %>
-				 </tr>
-			    <% end %>
-</tbody>
-</table>	    
-
-    <%= link_to "Inventoried Items", products_path %>
-
-	<% end %>
+<% if user_signed_in? %>
+	<h3>What's Happening Today?</h3>
+	
+	<table class="table table-bordered table-condensed table-striped table-hover">
+		<thead>
+			<tr>
+				<th>Name</th>
+				<th>Start Time</th>
+				<th>End Time</th>
+			</tr>
+		</thead>
+		<tbody>
+			<% @events.each do |event| %>
+			<tr>
+				<% if Date.today == event.expiration_date %>
+			  <td>
+			    <%= link_to event.name, event %>
+				</td>
+				<td>
+					<%= event.start_time.strftime("%l:%M %p") %>
+				</td>
+				<td>
+					<%= event.end_time.strftime("%l:%M %p") %>
+				</td>
+			  <% end %>
+			</tr>
+			<% end %>
+		</tbody>
+	</table>
+<% else %>
+	<h3>Welcome To New Digs</h3>
+	<p>In order to proceed you'll need to <%= link_to 'Sign In', new_user_session_path %> to your existing account or <%= link_to 'Create', new_user_registration_path %> a new account.</p>
+<% end %>
