@@ -62,21 +62,23 @@
 				</div>
 			</div><!-- /navbar-inner -->
 		</div><!-- /navbar -->
+
 	
 	  <% if flash[:alert] %>
-	  <section class="container alert alert-error">
+	  <div class="container alert alert-error">
 	  	<%= flash[:alert] %>
-	  </section>
+	  </div>
 	  <% end %>
 	  
 	  <% if flash[:notice] %>
-	  <section class="container alert alert-info">
+	  <div class="container alert alert-info">
 	  	<%= flash[:notice] %>
-	  </section>
+	  </div>
 	  <% end %>
 	
-		<section class="container">
+		<div class="container">
 			<%= yield %>
-		</section>
+		</div>
+
 	</body>
 </html>

@@ -16,7 +16,7 @@
     <%= f.text_field :name %>
   </div>
   <div class="field">
-    <%= f.label :lastname %><br />
+    <%= f.label "Last Name" %><br />
     <%= f.text_field :lastname %>
   </div>
   <div class="field">
@@ -56,6 +56,6 @@
     <%= f.collection_select(:user_id, User.all, :id, :name, {:include_blank => 'Referring Agent'}) %>
   </div>
   <div class="actions">
-    <%= f.submit %>
+    <%= f.submit "Save Client", :class => "btn"%>
   </div>
 <% end %>

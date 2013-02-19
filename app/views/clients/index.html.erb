@@ -1,4 +1,4 @@
-<h1>Listing Clients</h1>
+<h2>Clients</h2>
 <%= link_to 'New Client', new_client_path, :class => 'btn btn-success' %>
 <br />
 <br />
@@ -7,14 +7,9 @@
 <tr>
 <th>Name</th>
 <th>Address</th>
-<th>County</th>
 <th>Phone</th>
 <th>Email</th>
-<th>Referring Agent</th>
-<th># of Adults</th>
-<th># of Children</th>
-<th>History</th>
-<th>Notes</th>
+<th>Adults/Children</th>
 <th></th>
 <th></th>
 <th></th>
@@ -23,37 +18,17 @@
 <tbody>
 <% @clients.each do |client|%>
 <tr>
-	    <td><%= client.name %><% if client.lastname? %> <%= client.lastname %><% end %></td>
+	    <td><%= link_to "#{client.name} #{client.lastname}", client %></td>
 
-	    <td><% if client.address != "" %>
-	    <%= client.address %>
-		<% end %></td>
-
-		<td><% if client.county != "" %>
-	    <%= client.county %>
-	    <% end %></td>
+	    <td><% if client.address != "" %><%= client.address %><% end %></td>
 
 	    <td><%= number_to_phone(client.phone, :area_code => true) %></td>
 
 	    <td><% if client.email != "" %>
 	    <%= link_to "Email", 'mailto: ' + client.email %>
 	    <% end %></td>
-	    
-	    <td><% if client.user_id != "" %>
-	    <%= link_to client.user.name.to_s, 'mailto: ' + client.user.email %>
-	    <% end %></td>
 
-		<td><%= client.adults %></td>
-
-		<td><%= client.children %></td>
-
-	    <td><% if client.history != "" %>
-		<%= truncate(client.history, :length => 50) %>
-		<% end %></td>
-
-	    <td><% if client.notes != "" %>
-		<%= truncate(client.notes, :length => 50) %>
-		<% end %></td>
+	    <td><%= client.adults %>/<%= client.children %></td>
 
 	    <td><%= link_to 'Show', client, :class => 'btn btn-info' %><% if can? :update, @clients %> </td>
 	    <td><%= link_to 'Edit', edit_client_path(client), :class => 'btn btn-warning' %><% end %><% if can? :destroy, @clients %> </td>

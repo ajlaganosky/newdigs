@@ -10,15 +10,15 @@
 </p>
 <p>
   <b>Price A:</b>
-  <%= @category.price_a %>
+  <%= number_to_currency(@category.price_a) %>
 </p>
 <p>
   <b>Price B:</b>
-  <%= @category.price_b %>
+  <%= number_to_currency(@category.price_b) %>
 </p>
 <p>
   <b>Price C:</b>
-  <%= @category.price_c %>
+  <%= number_to_currency(@category.price_c) %>
 </p>
 
 <%= link_to 'Edit', edit_category_path(@category), :class => "btn btn-warning" %>
