@@ -15,10 +15,9 @@
   <div><%= f.label :name %><br />
   <%= f.text_field :name %></div>
   
-   <div><%= f.label :role %><br />
-    <%= f.collection_select(:role_id, Role.all, :id, :name, {:include_blank => 'Level of Access'}) %>
-  </div>
-
+   <!-- div><%#= f.label :role %><br />
+    <%#= f.collection_select(:role_id, Role.all, :id, :name, {:include_blank => 'Level of Access'}) %>
+  </div -->
 
   <div><%= f.submit "Sign up" %></div>
 <% end %>

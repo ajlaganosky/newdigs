@@ -1,5 +1,8 @@
 Inventory::Application.routes.draw do
 
+  resources :logins
+
+
   match 'events/filter/:filter' => 'events#filter'
 
   resources :wishlists
@@ -27,6 +30,7 @@ Inventory::Application.routes.draw do
   resources :levels
   
   devise_for :users
+  resources :user, :controller => "user"
 
   get "roles/new"
 

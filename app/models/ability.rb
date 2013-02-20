@@ -35,6 +35,11 @@ class Ability
     # ADMIN = 4
 	    can :manage, :all if user.role_id == 4
 	    can :read, :all if user.role_id == 4
+
+    # registrated = 5
+	    cannot :manage, :all if user.role_id == 5
+	    can :read, :all if user.role_id == 5
+
 	
 	#######################################################################################
 

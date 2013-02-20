@@ -53,7 +53,7 @@
   </div>
   <div class="field">
   	<%= f.label "Referring Agent" %><br />
-    <%= f.collection_select(:user_id, User.all, :id, :name, {:include_blank => 'Referring Agent'}) %>
+    <%= f.collection_select(:user_id, User.where(:role_id => 1), :id, :name, {:include_blank => 'Referring Agent'}) %>
   </div>
   <div class="actions">
     <%= f.submit "Save Client", :class => "btn"%>
